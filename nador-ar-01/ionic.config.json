@@ -1,0 +1,7 @@
+{
+  "name": "nador-ar-01",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
