@@ -1,0 +1,31 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    
+    <!-- import events.js script -->
+    <script
+        src="https://raw.githack.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
+
+    <script src="./lib/html5-qrcode.min.js"></script>
+    <script src="./lib/html2canvas.min.js"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+    <div class="row">
+        <button id="scanScreen">
+            SCAN
+        </button>
+    </div>
+
+    <div id="divQrReader"></div>
+    <input type="file" id="inputQrReader" capture>
+    <script src="./js/qr.js"></script>
+
+</body>
+
+</html>
