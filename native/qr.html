@@ -13,6 +13,13 @@
 
     <script src="./lib/html5-qrcode.min.js"></script>
     <script src="./lib/html2canvas.min.js"></script>
+
+    <style>
+        #qr-canvas-visible {
+            width: 300px !important;
+            height: auto !important;
+        }
+    </style>
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
@@ -23,8 +30,10 @@
     </div>
 
     <div id="divQrReader"></div>
-    <input type="file" id="inputQrReader" capture>
-    <script src="./js/qr.js"></script>
+    <input type="file" id="inputQrReader">
+    <script src="./js/qr-test.js"></script>
+
+    <img src="./nador-machine-123.png" width="250" alt="" srcset="">
 
 </body>
 
