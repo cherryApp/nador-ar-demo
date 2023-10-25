@@ -1,0 +1,13 @@
+{
+  "name": "nador-ar-demo",
+  "version": "1.0.0",
+  "description": "Demo app for AR possibilities",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "firebase deploy --only hosting:cherry-test-site",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

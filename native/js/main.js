@@ -1,5 +1,4 @@
 const getImage = () => {
-  console.log('start scanning');
 
   const video = document.querySelector('video#arjs-video');
   const canvas = document.createElement('canvas');
@@ -22,4 +21,4 @@ const getImage = () => {
   }
 };
 
-setInterval( getImage, 2500 );
+setInterval( getImage, 1000 );
