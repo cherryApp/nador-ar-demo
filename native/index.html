@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden;'>
     <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
     <a-scene id="scene" embedded vr-mode-ui="enabled: false"
-        arjs='sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
+        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
         capture-screenshot>
 
         <a-assets>
