@@ -22,9 +22,11 @@
         capture-screenshot>
 
         <a-assets>
-            <a-mixin id="marker" geometry="primitive: plane; width: 0.057; height: 0.057"
-                material="color: #C03546"></a-mixin>
-        </a-assets>
+            <a-mixin id="text"
+              text="align: center; width: 6;
+                   value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam"
+            ></a-mixin>
+          </a-assets>
 
         <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type='barcode'
             value='6'>
@@ -47,16 +49,18 @@
 
         <a-entity code-check camera></a-entity>
 
-        <!-- font: https://cdn.aframe.io/fonts/DejaVu-sdf.fnt; -->
         <a-entity 
             position="6 7 -36" 
             id="data-sheet"
-            animation="property: position"
-            geometry="primitive: plane; width: 8; height: auto" 
-            material="color: rgba(255, 255, 255, 1)" 
-            text="color: black; align: center; value:">
+            geometry="primitive: plane; width: 7; height: auto" 
+            material="color: tomato; opacity: 0.5"
+            scale="2 2 2"
+            text="color: black; align: left; width: 6;
+              value:">
         </a-entity>
 
+        <!-- <a-box color="tomato" position="6 5 -20" rotation="0 0 0" depth="0.5" height="1" width="2"></a-box> -->
+        <!-- <a-text color="black" value="Hello There!" position="-5.9 5 -19" width="2" height="auto"></a-text> -->
     </a-scene>
 
     <!-- <div id="divQrReader"></div> -->

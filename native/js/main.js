@@ -23,7 +23,7 @@ const getImage = () => {
   });
 
   if (code && code.data) {
-    const txt = `Code: ${code.data}\nName: cartoon packager`;
+    const txt = `Code: ${code.data}\n\nName: cartoon packager\n\nWeight: 2350kg\n\nWidth: 3000mm\n\nName: cartoon packager\n\nWeight: 2350kg\n\nWidth: 3000mm`;
     lastCodeData = txt;
   }
 };
@@ -50,17 +50,30 @@ AFRAME.registerComponent('code-check', {
 
     const markerPosition = new THREE.Vector3();
     marker.object3D.getWorldPosition(markerPosition);
+    const markerRotation = marker.object3D.rotation;
+
+    // const box = document.querySelector('#data-box');
+    // if (box) {
+    //   box.setAttribute('rotation', {
+    //     x: markerRotation.x * 3,
+    //     y: markerRotation.y * 3,
+    //     z: markerRotation.z * 3,
+    //   });
+    //   console.log( box.getAttribute('rotation') );
+
+    //   box.setAttribute('position', markerPosition);
+    // }
 
     const sheet = document.querySelector('#data-sheet');
     if (sheet) {
       let text = sheet.getAttribute('text');
       if (lastCodeData) {
+        console.log(lastCodeData)
         text.value = lastCodeData;
         sheet.setAttribute('text', text);
+        sheet.setAttribute('position', markerPosition);
       }
-
-      const sheetPosition = new THREE.Vector3();
-      sheet.object3D.getWorldPosition(sheetPosition);
+      
 
       // this.el.setAttribute("animation", {
       //   property: 'position',
@@ -69,7 +82,6 @@ AFRAME.registerComponent('code-check', {
       //   dur: "1000",
       //   easing: 'linear',
       // })
-      sheet.setAttribute('position', markerPosition);
       // sheet.play()
     }
   }
