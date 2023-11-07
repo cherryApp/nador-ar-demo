@@ -7,8 +7,12 @@
     box-shadow: 0 0 5px blue;
     background-color: rgba(255, 255, 255, 0.7);
     padding: 2rem;
-    font-size: 2rem;
+    font-size: 1.3rem;
     /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+}
+
+#data-sheet pre {
+    width: 90%;
 }
 
 .btn-circle {

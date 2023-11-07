@@ -29,9 +29,19 @@ const getImage = () => {
     inversionAttempts: "dontInvert",
   });
 
-  if (code && code.name && code.guid) {
-    const txt = `GUID: ${code.guid}\nNév: ${code.name}\nName: cartoon packager\nWeight: 2350kg\nWidth: 3000mm\nName: cartoon packager\nWeight: 2350kg\nWidth: 3000mm`;
-    lastCodeData = txt;
+  
+  if (code && code.data) {
+    console.log(code)
+    try {
+      code = JSON.parse(code.data);
+      let txt = '';
+      for (let k of Object.keys(code)) {
+        txt += `<div>${k}: ${code[k]}</div>`;
+      }
+      lastCodeData = txt;
+    } catch (e) {
+      console.log(e);
+    }
   }
 };
 
@@ -74,7 +84,7 @@ AFRAME.registerComponent('code-check', {
     
     if (sheet) {
       if (lastCodeData) {
-        sheet.querySelector('pre').innerHTML = lastCodeData;
+        sheet.querySelector('.content').innerHTML = lastCodeData;
         if (!sheet.classList.contains('show')) {
           sheet.classList.add('show');
         }
