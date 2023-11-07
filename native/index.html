@@ -3,6 +3,10 @@
 
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="style/app.css">
+
     <script src="./lib/aframe-v1.4.2.min.js"></script>
     <script src="./lib/aframe-ar.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
@@ -14,8 +18,6 @@
     <script src="./lib/html5-qrcode.min.js"></script>
     <script src="./lib/html2canvas.min.js"></script>
 
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style/app.css">
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
@@ -54,6 +56,9 @@
     </a-scene>
 
     <div id="data-sheet">
+        <button class="btn btn-circle btn-primary btn-xl mb-3 btn-sheet-toggle">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </button>
         <pre></pre>
     </div>
 

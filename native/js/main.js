@@ -1,6 +1,12 @@
 const REFRESH_INTERVAL = 1000;
 let lastCodeData = '';
 const sheet = document.querySelector('#data-sheet');
+const toggleBtn = sheet.querySelector('.btn-sheet-toggle');
+
+toggleBtn.addEventListener('click', () => {
+  sheet.classList.remove('show');
+  lastCodeData = '';
+})
 
 const getImage = () => {
 
@@ -23,8 +29,8 @@ const getImage = () => {
     inversionAttempts: "dontInvert",
   });
 
-  if (code && code.data) {
-    const txt = `Code: ${code.data}\n\nName: cartoon packager\n\nWeight: 2350kg\n\nWidth: 3000mm\n\nName: cartoon packager\n\nWeight: 2350kg\n\nWidth: 3000mm`;
+  if (code && code.name && code.guid) {
+    const txt = `GUID: ${code.guid}\nNév: ${code.name}\nName: cartoon packager\nWeight: 2350kg\nWidth: 3000mm\nName: cartoon packager\nWeight: 2350kg\nWidth: 3000mm`;
     lastCodeData = txt;
   }
 };
