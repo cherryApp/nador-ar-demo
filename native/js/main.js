@@ -1,5 +1,6 @@
 const REFRESH_INTERVAL = 1000;
 let lastCodeData = '';
+const sheet = document.querySelector('#data-sheet');
 
 const getImage = () => {
 
@@ -64,15 +65,21 @@ AFRAME.registerComponent('code-check', {
     //   box.setAttribute('position', markerPosition);
     // }
 
-    const sheet = document.querySelector('#data-sheet');
+    
     if (sheet) {
-      let text = sheet.getAttribute('text');
       if (lastCodeData) {
-        console.log(lastCodeData)
-        text.value = lastCodeData;
-        sheet.setAttribute('text', text);
-        sheet.setAttribute('position', markerPosition);
+        sheet.querySelector('pre').innerHTML = lastCodeData;
+        if (!sheet.classList.contains('show')) {
+          sheet.classList.add('show');
+        }
       }
+      // let text = sheet.getAttribute('text');
+      // if (lastCodeData) {
+      //   console.log(lastCodeData)
+      //   text.value = lastCodeData;
+      //   sheet.setAttribute('text', text);
+      //   sheet.setAttribute('position', markerPosition);
+      // }
       
 
       // this.el.setAttribute("animation", {

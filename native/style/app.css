@@ -1,0 +1,26 @@
+#data-sheet {
+    position: absolute;
+    top: 0;
+    right: -70vw;
+    width: 50vw;
+    height: 100vh;
+    box-shadow: 0 0 5px blue;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#data-sheet.show {
+    animation: fromRight 0.5s ease-out forwards;
+}
+
+@keyframes fromRight {
+    from {
+        right: -70vw;
+    }
+
+    to {
+        right: 0;
+    }
+}

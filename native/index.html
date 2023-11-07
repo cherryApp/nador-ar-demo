@@ -13,6 +13,9 @@
 
     <script src="./lib/html5-qrcode.min.js"></script>
     <script src="./lib/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/app.css">
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
@@ -34,34 +37,25 @@
             </a-entity> -->
         </a-marker>
 
-        <!-- <a-text 
-            position="6 7 -36" 
-            id="data-sheet" 
-            value="Hello, World!" 
-            width="15" 
-            line-height="50" 
-            letter-spacing="5" 
-            color="white"
-            background-color="rgba(100, 100, 100, 0.4)">
-        </a-text> -->
-
-
-
         <a-entity code-check camera></a-entity>
 
-        <a-entity 
-            position="6 7 -36" 
+        <!-- <a-entity 
+            position="6 8 -36" 
             id="data-sheet"
             geometry="primitive: plane; width: 7; height: auto" 
             material="color: tomato; opacity: 0.5"
             scale="1.5 1.5 1.5"
             text="color: black; align: left; width: 6;
               value:">
-        </a-entity>
+        </a-entity> -->
 
         <!-- <a-box color="tomato" position="6 5 -20" rotation="0 0 0" depth="0.5" height="1" width="2"></a-box> -->
         <!-- <a-text color="black" value="Hello There!" position="-5.9 5 -19" width="2" height="auto"></a-text> -->
     </a-scene>
+
+    <div id="data-sheet">
+        <pre></pre>
+    </div>
 
     <!-- <div id="divQrReader"></div> -->
     <!-- <script src="./js/qr.js"></script> -->
