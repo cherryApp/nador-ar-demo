@@ -3,12 +3,14 @@ let lastCodeData = '';
 const sheet = document.querySelector('#data-sheet');
 const toggleBtn = sheet.querySelector('.btn-sheet-toggle');
 
+const service = new DataService();
+
 toggleBtn.addEventListener('click', () => {
   sheet.classList.remove('show');
   lastCodeData = '';
 })
 
-const getImage = () => {
+const getImage = async () => {
 
   const video = document.querySelector('video#arjs-video');
 
@@ -34,9 +36,10 @@ const getImage = () => {
     console.log(code)
     try {
       code = JSON.parse(code.data);
+      const serverData = await service.getData(code.guid);
       let txt = '';
-      for (let k of Object.keys(code)) {
-        txt += `<div>${k}: ${code[k]}</div>`;
+      for (let k of Object.keys(serverData[0])) {
+        txt += `<div>${k}: ${serverData[0][k]}</div>`;
       }
       lastCodeData = txt;
     } catch (e) {
