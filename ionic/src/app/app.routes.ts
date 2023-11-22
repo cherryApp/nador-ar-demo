@@ -13,9 +13,9 @@ export const routes: Routes = [
       import('./page/device/device.component').then((m) => m.DeviceComponent),
   },
   {
-    path: 'measurement',
+    path: 'history',
     loadComponent: () =>
-      import('./page/measurement/measurement.component').then((m) => m.MeasurementComponent),
+      import('./page/history/history.component').then((m) => m.HistoryComponent),
   },
   {
     path: 'profile',

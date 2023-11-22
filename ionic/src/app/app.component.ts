@@ -82,10 +82,10 @@ export class AppComponent {
 
   public appPages = [
     { title: 'Home', url: '/', icon: 'home' },
-    { title: 'Mérőegységek', url: '/device', icon: 'briefcase' },
-    { title: 'Mérések', url: '/measurement', icon: 'bar-chart' },
-    { title: 'Profil', url: '/profile', icon: 'person' },
-    { title: 'Belépés', url: '/login', icon: 'log-in' },
+    // { title: 'Mérőegységek', url: '/device', icon: 'briefcase' },
+    { title: 'Gépek', url: '/history', icon: 'bar-chart' },
+    // { title: 'Profil', url: '/profile', icon: 'person' },
+    // { title: 'Belépés', url: '/login', icon: 'log-in' },
   ];
 
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
@@ -121,10 +121,10 @@ export class AppComponent {
 
   get title(): string {
     // console.log( history.state );
-    const title = history.state.title;
+    const title = history.state?.title;
     if (title && title !== 'Home') {
       return title;
     }
-    return 'Geo-milk';
+    return 'NadorMF';
   }
 }
