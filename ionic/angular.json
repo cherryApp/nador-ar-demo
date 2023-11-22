@@ -33,12 +33,7 @@
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
             "scripts": [
-              "src/assets/aframe-v1.4.2.min.js",
-              "src/assets/aframe-ar.js",
-              "src/assets/aframe-extras.loaders.min.js",
-              "src/assets/events.js",
-              "src/assets/html5-qrcode.min.js",
-              "src/assets/html2canvas.min.js"
+              "src/assets/jsQR.js"
             ]
           },
           "configurations": {
