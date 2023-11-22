@@ -1,0 +1,31 @@
+<!--
+  id: number = 0;
+  name: string = '';
+  code: string = '';
+  active: boolean = false;
+  company: string = '';
+ -->
+
+<ion-content>
+  @for (device of devices$ | async; track device.id) {
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> {{ device.name }} </ion-card-title>
+      <ion-card-subtitle> #{{ device.code }} </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div>Cég: {{ device.company }}</div>
+      <div>Státusz: {{ device.active ? 'Aktív' : 'Inaktív' }}</div>
+    </ion-card-content>
+
+    <ion-button fill="clear">
+      <ion-icon aria-hidden="true" slot="start" [ios]="'bar-chart-outline'" [md]="'bar-chart-sharp'"></ion-icon>
+      Mérések
+    </ion-button>
+  </ion-card>
+  } @empty {
+    Nincsenek mérőegységek
+  }
+
+</ion-content>

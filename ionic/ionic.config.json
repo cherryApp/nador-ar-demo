@@ -1,0 +1,7 @@
+{
+  "name": "nador-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
