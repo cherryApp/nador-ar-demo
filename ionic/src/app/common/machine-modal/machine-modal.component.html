@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-button color="medium" (click)="cancel()">Cancel</ion-button> -->
+    </ion-buttons>
+    <ion-title>Gép Adatai</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Bezár</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>{{ name }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ guid }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -6,8 +6,14 @@ import {
   ViewChild,
   ElementRef,
   OnDestroy,
+  inject,
 } from "@angular/core";
+import {
+  IonContent,
+  ModalController,
+} from "@ionic/angular/standalone";
 import { Subject, interval, takeUntil } from "rxjs";
+import { MachineModalComponent } from "src/app/common/machine-modal/machine-modal.component";
 
 declare var jsQR: any;
 
@@ -16,24 +22,41 @@ declare var jsQR: any;
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
   standalone: true,
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [
+    IonContent,
+  ],
+  providers: [
+    ModalController,
+  ],
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  modalCtrl = inject(ModalController);
+
   @ViewChild("video") video!: ElementRef<HTMLVideoElement>;
 
   @ViewChild("videoContainer") videoContainer!: ElementRef<HTMLDivElement>;
 
   stopSubscriptions: Subject<boolean> = new Subject<boolean>();
 
+  lastKnownQRData: { [key: string]: any } | null = null;
+
+  isModalOpen: boolean = false;
+
   constructor() {}
 
+  async canDismiss(data?: any, role?: string): Promise<boolean> {
+    return role !== 'gesture';
+  }
+
   ngOnInit() {
-    interval(500).pipe(
-      takeUntil(this.stopSubscriptions),
-    ).subscribe(() => {
-      this.setVideoSize();
-      this.getImage();
-    });
+    interval(500)
+      .pipe(takeUntil(this.stopSubscriptions))
+      .subscribe(() => {
+        this.setVideoSize();
+        this.getImage();
+        console.log(this.isModalOpen)
+      });
   }
 
   ngAfterViewInit(): void {
@@ -79,34 +102,58 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async getImage(): Promise<void> {
-
     if (!this.video) {
       return;
     }
-  
-    const canvas = document.createElement('canvas');
-  
+
+    const canvas = document.createElement("canvas");
+
     canvas.width = this.video.nativeElement.clientWidth;
     canvas.height = this.video.nativeElement.clientHeight;
-  
-    let ctx = canvas.getContext('2d');
+
+    let ctx = canvas.getContext("2d");
     if (!ctx) {
       return;
     }
 
     ctx.drawImage(this.video.nativeElement, 0, 0, canvas.width, canvas.height);
-  
+
     var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var code = jsQR(imageData.data, imageData.width, imageData.height, {
       inversionAttempts: "dontInvert",
     });
-  
-    
+
     if (code && code.data) {
-      console.log(code)
-      console.log(code.data)
+      code = JSON.parse(code.data);
+
+      if (code.guid === this.lastKnownQRData?.["guid"]) {
+        return;
+      }
+
+      this.lastKnownQRData = code;
+
+      await this.openModal();
     }
-  };
+  }
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: MachineModalComponent,
+      componentProps: {
+        name: this.lastKnownQRData?.["name"],
+        guid: this.lastKnownQRData?.["guid"],
+      }
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    this.lastKnownQRData = null;
+
+    if (role === 'confirm') {
+      // this.message = `Hello, ${data}!`;
+    }
+  }
 
   ngOnDestroy(): void {
     this.stopSubscriptions.next(true);
