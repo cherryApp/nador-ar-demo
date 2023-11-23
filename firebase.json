@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "cherry-test-site",
-    "public": "native",
+    "public": "ionic/www",
     "ignore": [
       "firebase.json",
       "**/.*",
