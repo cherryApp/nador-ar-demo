@@ -12,10 +12,15 @@ import {
   IonContent,
   ModalController,
 } from "@ionic/angular/standalone";
+import { addIcons } from 'ionicons';
+import { cameraReverseOutline} from 'ionicons/icons';
 import { TranslocoPipe } from "@ngneat/transloco";
 import { Subject, interval, takeUntil } from "rxjs";
+import { DeviceModalComponent } from "src/app/common/device-modal/device-modal.component";
 import { MachineModalComponent } from "src/app/common/machine-modal/machine-modal.component";
 import { isMobile } from "src/app/common/utils";
+import { IonButton, IonIcon } from "@ionic/angular/standalone";
+import { MenuService } from "src/app/app.component";
 
 declare var jsQR: any;
 
@@ -27,6 +32,8 @@ declare var jsQR: any;
   imports: [
     IonContent,
     TranslocoPipe,
+    IonButton,
+    IonIcon,
   ],
   providers: [
     ModalController,
@@ -35,6 +42,8 @@ declare var jsQR: any;
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   modalCtrl = inject(ModalController);
+
+  menuService = inject(MenuService);
 
   @ViewChild("video") video!: ElementRef<HTMLVideoElement>;
 
@@ -46,7 +55,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   isModalOpen: boolean = false;
 
-  constructor() {}
+  constructor() {
+    addIcons({
+      cameraReverseOutline,
+    });
+  }
 
   async canDismiss(data?: any, role?: string): Promise<boolean> {
     return role !== 'gesture';
@@ -58,24 +71,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe(() => {
         this.setVideoSize();
         this.getImage();
-        // console.log(this.isModalOpen)
       });
+
+    this.menuService.openDeviceModal.subscribe(() => {
+      this.openDeviceModal();
+    });
   }
 
   ngAfterViewInit(): void {
     this.startCamera('');
-  }
-
-  handleVideo(cameraFacing: string = 'user'): any {
-    const constraints = {
-      video: {
-        facingMode: {
-          exact: cameraFacing,
-        },
-      },
-    };
-
-    return constraints;
   }
 
   setVideoSize(): void {
@@ -192,6 +196,20 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (role === 'confirm') {
       // this.message = `Hello, ${data}!`;
     }
+  }
+
+  async openDeviceModal() {
+    const modal = await this.modalCtrl.create({
+      component: DeviceModalComponent,
+      componentProps: {
+        devices: await this.getDevices(),
+      }
+    });
+    modal.present();
+
+    const { data } = await modal.onWillDismiss();
+    
+    this.startCamera(data?.deviceId);
   }
 
   ngOnDestroy(): void {

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, Injectable, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router, ActivatedRoute, RouterState } from '@angular/router';
 import {
   IonApp,
@@ -19,6 +19,7 @@ import {
   IonTitle,
   IonButtons,
   IonMenuButton,
+  IonButton,
 } from '@ionic/angular/standalone';
 import { TranslocoPipe, TranslocoService } from '@ngneat/transloco';
 import { addIcons } from 'ionicons';
@@ -47,7 +48,14 @@ import {
   barChartSharp,
   briefcaseOutline,
   briefcaseSharp,
+  cameraReverseOutline,
 } from 'ionicons/icons';
+import { Subject } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class MenuService {
+  public openDeviceModal: Subject<boolean> = new Subject<boolean>();
+}
 
 @Component({
   selector: 'app-root',
@@ -74,6 +82,7 @@ import {
     IonToolbar,
     IonTitle,
     IonButtons,
+    IonButton,
     IonMenuButton,
     TranslocoPipe,
   ],
@@ -86,6 +95,8 @@ export class AppComponent {
   router = inject(Router);
 
   translocoService = inject(TranslocoService);
+
+  menuService = inject(MenuService);
 
   public appPages = [
     { title: 'pages.home.title', url: '/', icon: 'home' },
@@ -123,7 +134,12 @@ export class AppComponent {
       barChartSharp,
       briefcaseOutline,
       briefcaseSharp,
+      cameraReverseOutline,
     });
+  }
+
+  openDeviceModal() {
+    this.menuService.openDeviceModal.next(true);
   }
 
   get title(): string {
