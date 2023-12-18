@@ -19,7 +19,7 @@
           [routerLinkActiveOptions]="{ exact: true }"
           [state]="page">
           <ion-icon aria-hidden="true" slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
-          <ion-label>{{ page.title }}</ion-label>
+          <ion-label>{{ page.title | transloco }}</ion-label>
         </ion-item>
       </ion-menu-toggle>
     </ion-list>

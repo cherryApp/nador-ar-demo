@@ -75,10 +75,10 @@ import {
     IonTitle,
     IonButtons,
     IonMenuButton,
+    TranslocoPipe,
   ],
   providers: [
     TranslocoService,
-    TranslocoPipe,
   ]
 })
 export class AppComponent {
@@ -88,9 +88,9 @@ export class AppComponent {
   translocoService = inject(TranslocoService);
 
   public appPages = [
-    { title: 'Home', url: '/', icon: 'home' },
+    { title: 'pages.home.title', url: '/', icon: 'home' },
     // { title: 'Mérőegységek', url: '/device', icon: 'briefcase' },
-    { title: 'Gépek', url: '/history', icon: 'bar-chart' },
+    { title: 'pages.history.title', url: '/history', icon: 'bar-chart' },
     // { title: 'Profil', url: '/profile', icon: 'person' },
     // { title: 'Belépés', url: '/login', icon: 'log-in' },
   ];
@@ -127,12 +127,7 @@ export class AppComponent {
   }
 
   get title(): string {
-    // console.log( history.state );
     const title = history.state?.title;
-    if (title && title !== 'Home') {
-      return this.translocoService.translate('title');
-      // return title;
-    }
-    return 'NadorMF';
+    return this.translocoService.translate(title || 'app_title');
   }
 }

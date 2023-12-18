@@ -15,6 +15,7 @@ import {
 import { TranslocoPipe } from "@ngneat/transloco";
 import { Subject, interval, takeUntil } from "rxjs";
 import { MachineModalComponent } from "src/app/common/machine-modal/machine-modal.component";
+import { isMobile } from "src/app/common/utils";
 
 declare var jsQR: any;
 
@@ -62,7 +63,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.startCamera();
+    this.startCamera('');
+  }
+
+  handleVideo(cameraFacing: string = 'user'): any {
+    const constraints = {
+      video: {
+        facingMode: {
+          exact: cameraFacing,
+        },
+      },
+    };
+
+    return constraints;
   }
 
   setVideoSize(): void {
@@ -87,18 +100,38 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.video.nativeElement.style.width = containerWidth + "px";
       this.video.nativeElement.style.top = top + "px";
     }
+
+    if (isMobile()) {
+      this.video.nativeElement.style.width = "100%";
+      this.video.nativeElement.style.left = "0px";
+      return;
+    }
+
   }
 
-  startCamera(): void {
+  async getDevices(): Promise<MediaDeviceInfo[]> {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    return devices.filter( (device) => device.kind === "videoinput" );
+  }
+
+  async startCamera(deviceId: string): Promise<void> {
     // validate video element
     if (navigator.mediaDevices.getUserMedia) {
+      const devices = await this.getDevices();
+
+      console.log(devices[0].label);
+
+
       navigator.mediaDevices
-        .getUserMedia({ video: true })
+        .getUserMedia({video: {
+          deviceId: deviceId || devices[0].deviceId,
+        }})
         .then((stream) => {
           this.video.nativeElement.srcObject = stream;
         })
         .catch(function (error) {
           console.log("Something went wrong!");
+          console.log(error);
         });
     }
   }
