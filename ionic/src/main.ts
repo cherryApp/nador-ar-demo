@@ -11,6 +11,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@ngneat/transloco';
+import { TranslationService } from './app/service/translation.service';
 
 if (environment.production) {
   enableProdMode();
@@ -34,7 +35,7 @@ bootstrapApplication(AppComponent, {
           reRenderOnLangChange: true,
           prodMode: !isDevMode(),
         },
-        loader: TranslocoHttpLoader
+        loader: TranslationService,
       }),
   ],
 });

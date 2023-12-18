@@ -1,11 +1,21 @@
 {
     "app_title": "Nádor Gépkereső",
-    "app_description": "Find your machine",
-    "app_name": "Nador Machine Finder",
-    "app_author": "Nador",
+    "app_description": "Keresd meg a gépet",
+    "app_name": "NadorMF",
+    "app_author": "Nádor",
+    "commands": {
+        "start": "indítás",
+        "stop": "megállítás",
+        "close": "bezárás",
+        "open": "megnyitás"
+    },
+    "messages": {
+        "switch_camera": "Kamera váltása",
+        "machine_data": "Gép Adatai"
+    },
     "pages": {
         "home": {
-            "title": "NadorMF"
+            "title": "Gépkereső"
         },
         "history": {
             "title": "Gépek"
