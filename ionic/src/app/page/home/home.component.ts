@@ -12,6 +12,7 @@ import {
   IonContent,
   ModalController,
 } from "@ionic/angular/standalone";
+import { TranslocoPipe } from "@ngneat/transloco";
 import { Subject, interval, takeUntil } from "rxjs";
 import { MachineModalComponent } from "src/app/common/machine-modal/machine-modal.component";
 
@@ -24,6 +25,7 @@ declare var jsQR: any;
   standalone: true,
   imports: [
     IonContent,
+    TranslocoPipe,
   ],
   providers: [
     ModalController,
@@ -55,7 +57,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe(() => {
         this.setVideoSize();
         this.getImage();
-        console.log(this.isModalOpen)
+        // console.log(this.isModalOpen)
       });
   }
 
@@ -117,6 +119,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ctx.drawImage(this.video.nativeElement, 0, 0, canvas.width, canvas.height);
+
+    if (canvas.width === 0 || canvas.height === 0) {
+      return;
+    }
 
     var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var code = jsQR(imageData.data, imageData.width, imageData.height, {

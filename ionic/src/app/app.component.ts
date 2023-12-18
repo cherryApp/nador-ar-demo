@@ -20,7 +20,7 @@ import {
   IonButtons,
   IonMenuButton,
 } from '@ionic/angular/standalone';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoPipe, TranslocoService } from '@ngneat/transloco';
 import { addIcons } from 'ionicons';
 import {
   homeOutline,
@@ -78,6 +78,7 @@ import {
   ],
   providers: [
     TranslocoService,
+    TranslocoPipe,
   ]
 })
 export class AppComponent {
@@ -129,8 +130,8 @@ export class AppComponent {
     // console.log( history.state );
     const title = history.state?.title;
     if (title && title !== 'Home') {
-      // this.translocoService.translate('title');
-      return title;
+      return this.translocoService.translate('title');
+      // return title;
     }
     return 'NadorMF';
   }

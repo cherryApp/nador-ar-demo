@@ -31,7 +31,6 @@ bootstrapApplication(AppComponent, {
         config: { 
           availableLangs: ['en', 'es', 'hu'],
           defaultLang: 'hu',
-          // Remove this option if your application doesn't support changing language in runtime.
           reRenderOnLangChange: true,
           prodMode: !isDevMode(),
         },
