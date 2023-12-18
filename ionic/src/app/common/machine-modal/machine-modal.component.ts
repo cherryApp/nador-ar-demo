@@ -15,6 +15,7 @@ import {
   IonButtons,
   IonTitle,
 } from "@ionic/angular/standalone";
+import { TranslocoPipe } from "@ngneat/transloco";
 
 @Component({
   selector: "app-machine-modal",
@@ -35,10 +36,12 @@ import {
     IonButton,
     IonButtons,
     IonTitle,
+    TranslocoPipe,
   ],
   providers: [ModalController],
 })
 export class MachineModalComponent implements OnInit {
+
   @Input() name: string = '';
 
   @Input() guid: string = '';

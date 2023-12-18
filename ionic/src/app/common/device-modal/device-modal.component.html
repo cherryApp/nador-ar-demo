@@ -3,9 +3,13 @@
     <ion-buttons slot="start">
       <!-- <ion-button color="medium" (click)="cancel()">Cancel</ion-button> -->
     </ion-buttons>
-    <ion-title>Kamera váltása</ion-title>
+    <ion-title>
+      {{ 'messages.switch_camera' | transloco }}
+    </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="cancel()" [strong]="true">Bezár</ion-button>
+      <ion-button (click)="cancel()" [strong]="true">
+        {{ 'commands.close' | transloco }}
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

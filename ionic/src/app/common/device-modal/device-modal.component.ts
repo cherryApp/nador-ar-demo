@@ -16,6 +16,7 @@ import {
   IonButtons,
   IonTitle,
 } from "@ionic/angular/standalone";
+import { TranslocoPipe } from "@ngneat/transloco";
 
 @Component({
   selector: 'app-device-modal',
@@ -37,6 +38,7 @@ import {
     IonButton,
     IonButtons,
     IonTitle,
+    TranslocoPipe,
   ],
   providers: [ModalController],
 })

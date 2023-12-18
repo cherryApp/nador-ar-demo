@@ -3,9 +3,13 @@
     <ion-buttons slot="start">
       <!-- <ion-button color="medium" (click)="cancel()">Cancel</ion-button> -->
     </ion-buttons>
-    <ion-title>Gép Adatai</ion-title>
+    <ion-title>
+      {{ 'messages.machine_data' | transloco }}
+    </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Bezár</ion-button>
+      <ion-button (click)="confirm()" [strong]="true">
+        {{ 'commands.close' | transloco }}
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

@@ -3,6 +3,16 @@
     "app_description": "Keresd meg a gépet",
     "app_name": "NadorMF",
     "app_author": "Nádor",
+    "commands": {
+        "start": "indítás",
+        "stop": "megállítás",
+        "close": "bezárás",
+        "open": "megnyitás"
+    },
+    "messages": {
+        "switch_camera": "Kamera váltása",
+        "machine_data": "Gép Adatai"
+    },
     "pages": {
         "home": {
             "title": "Gépkereső"

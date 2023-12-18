@@ -209,7 +209,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const { data } = await modal.onWillDismiss();
     
-    this.startCamera(data?.deviceId);
+    if (data?.deviceId) {
+      this.startCamera(data?.deviceId);
+    }
   }
 
   ngOnDestroy(): void {
