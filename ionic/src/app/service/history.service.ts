@@ -1,10 +1,11 @@
 import { Injectable, inject } from "@angular/core";
-import { IonicStorageModule } from "@ionic/storage-angular";
 import { Storage } from "@ionic/storage-angular";
 import { HistoryData } from "../model/history-data";
-import { BehaviorSubject, Observable, firstValueFrom, of } from "rxjs";
+import { BehaviorSubject, filter, firstValueFrom } from "rxjs";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HistoryService {
 
   storage = inject(Storage);
@@ -30,20 +31,31 @@ export class HistoryService {
     this.hasStorage.next(true);
   }
 
+  private waitForStorage(): Promise<boolean> {
+    if (this.hasStorage.value === true) {
+      return Promise.resolve(true);
+    }
+
+    return firstValueFrom(this.hasStorage.pipe(
+      filter((hasStorage) => hasStorage === true),
+    ));
+  }
+
   async getAll(name: string = 'machineHistory'): Promise<void> {
-    await firstValueFrom(this.hasStorage);
+    await this.waitForStorage();
     this._storage?.get(name).then((data) => {
       if (data) {
         this.list$.next(JSON.parse(data));
       } else {
         this.list$.next([]);
-        console.log('no data');
       }
+    }).catch((err) => {
+      console.error(err);  
     });
   }
 
   async get(id: number, name: string = 'machineHistory'): Promise<void> {
-    await firstValueFrom(this.hasStorage);
+    await this.waitForStorage();
     this._storage?.get(name).then((data) => {
       if (data) {
         this.selected.next(JSON.parse(data).find(
@@ -56,7 +68,16 @@ export class HistoryService {
   }
 
   async add(toAdd: HistoryData, name: string = 'machineHistory'): Promise<void> {
-    await firstValueFrom(this.hasStorage);
+    await this.waitForStorage();
+
+    const exist = this.list$.value.find(
+      (d: HistoryData) => d.values['guid'] === toAdd.values['guid']
+    );
+    if (exist) {
+      toAdd.id = exist.id;
+      return await this.update(toAdd, name);
+    }
+
     this._storage?.get(name).then( async (data) => {
       if (data) {
         const list = JSON.parse(data);
@@ -74,7 +95,7 @@ export class HistoryService {
   }
 
   async update(toUpdate: HistoryData, name: string = 'machineHistory'): Promise<void> {
-    await firstValueFrom(this.hasStorage);
+    await this.waitForStorage();
     this._storage?.get(name).then( async (data) => {
       if (data) {
         const list = JSON.parse(data).map(
@@ -87,7 +108,7 @@ export class HistoryService {
   }
 
   async remove(id: number, name: string = 'machineHistory'): Promise<void> {
-    await firstValueFrom(this.hasStorage);
+    await this.waitForStorage();
     this._storage?.get(name).then( async (data) => {
       if (data) {
         const list = JSON.parse(data).filter(

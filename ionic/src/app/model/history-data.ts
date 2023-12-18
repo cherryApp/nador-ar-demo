@@ -6,6 +6,6 @@ export class HistoryData {
     time: string = '';
     arrived: string = '';
     values: {
-        [key: string]: number
+        [key: string]: any
     } = {};
 }

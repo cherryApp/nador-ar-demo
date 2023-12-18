@@ -21,6 +21,8 @@ import { MachineModalComponent } from "src/app/common/machine-modal/machine-moda
 import { isMobile } from "src/app/common/utils";
 import { IonButton, IonIcon } from "@ionic/angular/standalone";
 import { MenuService } from "src/app/app.component";
+import { HistoryService } from "src/app/service/history.service";
+import { HistoryData } from "src/app/model/history-data";
 
 declare var jsQR: any;
 
@@ -44,6 +46,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   modalCtrl = inject(ModalController);
 
   menuService = inject(MenuService);
+
+  historyService = inject(HistoryService);
 
   @ViewChild("video") video!: ElementRef<HTMLVideoElement>;
 
@@ -188,6 +192,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     });
     modal.present();
+
+    this.historyService.add({ 
+      ...new HistoryData(),
+      values: this.lastKnownQRData || {},
+    });
 
     const { data, role } = await modal.onWillDismiss();
 
