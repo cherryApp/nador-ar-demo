@@ -9,6 +9,10 @@
         "close": "bezárás",
         "open": "megnyitás"
     },
+    "buttons": {
+        "qr_code": "QR kód",
+        "map": "Térkép"
+    },
     "messages": {
         "switch_camera": "Kamera váltása",
         "machine_data": "Gép Adatai"
@@ -17,8 +21,14 @@
         "home": {
             "title": "Gépkereső"
         },
+        "qr": {
+            "title": "QR kód"
+        },
         "history": {
             "title": "Gépek"
+        },
+        "map": {
+            "title": "Térkép"
         }
     }
 }

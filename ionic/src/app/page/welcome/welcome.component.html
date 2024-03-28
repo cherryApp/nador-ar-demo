@@ -1,0 +1,20 @@
+<ion-content center text-center>
+  <ion-grid>
+    <ion-row>
+      <div style="height: 30vh;"></div>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-button size="large" routerLink="/qr">
+        <ion-icon slot="start" name="qr-code"></ion-icon>
+        {{ 'buttons.qr_code' | transloco }}
+      </ion-button>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-button size="large" routerLink="/map">
+        <ion-icon slot="start" name="map"></ion-icon>
+        {{ 'buttons.map' | transloco }}
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

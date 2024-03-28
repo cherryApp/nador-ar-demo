@@ -49,6 +49,10 @@ import {
   briefcaseOutline,
   briefcaseSharp,
   cameraReverseOutline,
+  mapOutline,
+  mapSharp,
+  qrCodeOutline,
+  qrCodeSharp,
 } from 'ionicons/icons';
 import { Subject } from 'rxjs';
 
@@ -99,10 +103,14 @@ export class AppComponent {
 
   menuService = inject(MenuService);
 
+  lastTitle = 'app_title';
+
   public appPages = [
     { title: 'pages.home.title', url: '/', icon: 'home' },
+    { title: 'pages.qr.title', url: '/qr', icon: 'qr-code' },
     // { title: 'Mérőegységek', url: '/device', icon: 'briefcase' },
     { title: 'pages.history.title', url: '/history', icon: 'bar-chart' },
+    { title: 'pages.map.title', url: '/map', icon: 'map' },
     // { title: 'Profil', url: '/profile', icon: 'person' },
     // { title: 'Belépés', url: '/login', icon: 'log-in' },
   ];
@@ -136,6 +144,10 @@ export class AppComponent {
       briefcaseOutline,
       briefcaseSharp,
       cameraReverseOutline,
+      mapOutline,
+      mapSharp,
+      qrCodeOutline,
+      qrCodeSharp,
     });
   }
 
@@ -144,8 +156,9 @@ export class AppComponent {
   }
 
   get title(): string {
-    const title = history.state?.title;
-    console.log(history.state)
-    return this.translocoService.translate(title || 'app_title');
+    const title = history.state?.title || this.lastTitle;
+
+    this.lastTitle = title;
+    return this.translocoService.translate(title);
   }
 }

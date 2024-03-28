@@ -4,6 +4,12 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
+      import('./page/welcome/welcome.component').then((m) => m.WelcomeComponent),
+    pathMatch: 'full',
+  },
+  {
+    path: 'qr',
+    loadComponent: () =>
       import('./page/home/home.component').then((m) => m.HomeComponent),
     pathMatch: 'full',
   },
@@ -11,6 +17,11 @@ export const routes: Routes = [
     path: 'device',
     loadComponent: () =>
       import('./page/device/device.component').then((m) => m.DeviceComponent),
+  },
+  {
+    path: 'map',
+    loadComponent: () =>
+      import('./page/map/map.component').then((m) => m.MapComponent),
   },
   {
     path: 'history',

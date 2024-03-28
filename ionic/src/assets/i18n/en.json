@@ -9,6 +9,10 @@
         "close": "close",
         "open": "open"
     },
+    "buttons": {
+        "qr_code": "QR Code",
+        "map": "Map"
+    },
     "messages": {
         "switch_camera": "Switch Camera",
         "machine_data": "Machine Data"
