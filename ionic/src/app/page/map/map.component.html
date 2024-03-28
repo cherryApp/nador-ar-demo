@@ -1,1 +1,12 @@
-<google-map></google-map>
+<ion-content center text-center>
+  <ion-grid>
+    <ion-row>
+      <google-map height="600px" width="400px" [options]="mapOptions">
+        @for (position of markerPositions; track position) {
+          <map-marker [position]="position" [options]="markerOptions" />
+        }
+      </google-map>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
