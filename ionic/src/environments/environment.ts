@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/'
+  apiUrl: 'http://localhost:3000/',
+  mapsAndroidApiKey: 'AIzaSyCPVVN0ryZLao5qACQHK8EDCKA2A1gV5Sw',
 };
 
 /*

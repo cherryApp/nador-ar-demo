@@ -2,5 +2,23 @@
     "app_title": "Nador Machine Finder",
     "app_description": "Find your machine",
     "app_name": "Nador Machine Finder",
-    "app_author": "Nador"
+    "app_author": "Nador",
+    "commands": {
+        "start": "start",
+        "stop": "stop",
+        "close": "close",
+        "open": "open"
+    },
+    "messages": {
+        "switch_camera": "Switch Camera",
+        "machine_data": "Machine Data"
+    },
+    "pages": {
+        "home": {
+            "title": "Machine Finder"
+        },
+        "history": {
+            "title": "Machines"
+        }
+    }
 }

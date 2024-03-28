@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Injectable, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injectable, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router, ActivatedRoute, RouterState } from '@angular/router';
 import {
   IonApp,
@@ -88,7 +88,8 @@ export class MenuService {
   ],
   providers: [
     TranslocoService,
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
 
@@ -144,6 +145,7 @@ export class AppComponent {
 
   get title(): string {
     const title = history.state?.title;
+    console.log(history.state)
     return this.translocoService.translate(title || 'app_title');
   }
 }
