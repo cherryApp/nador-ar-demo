@@ -81,7 +81,7 @@ export class MapComponent implements OnInit {
       poi: { lat: 46.89660094535991, lng: 19.66919601800715 },
       title: 'GAMF gép',
       id: '3344333nador',
-      img: '/assets/img/machine-002.jpg',
+      img: '/assets/img/machine-003.jpg',
     },
   ];
 
