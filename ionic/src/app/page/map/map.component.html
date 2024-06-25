@@ -2,22 +2,22 @@
   <ion-grid>
     <ion-row>
       <google-map height="600px" width="400px" [options]="mapOptions">
-        @for (position of markerPositions; track position) {
+        @for (point of pois; track $index) {
           <map-marker 
             #marker="mapMarker"
-            [position]="position" 
+            [position]="point.poi" 
             [options]="markerOptions"
-            [title]="'Csomagoló gép'" 
-            [label]="'Csomagoló gép'"
+            [title]="point.title" 
+            [label]="''"
             [clickable]="true"
             [icon]="getIcon()"
-            (mapClick)="openInfoWindow(marker)"/>
+            (mapClick)="openInfoWindow(marker, point)"/>
         }
         <map-info-window>
           <div class="info-window-content">
-            <h5>Nádor gép</h5>
-            <p>id: 3344332nador</p>
-            <img src="/assets/img/machine-001.jpg" alt="nador">
+            <h5>{{ infoTitle }}</h5>
+            <p>id: {{ infoID }}</p>
+            <img [src]="infoImg" alt="nador">
           </div>
         </map-info-window>
       </google-map>
