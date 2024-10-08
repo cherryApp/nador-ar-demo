@@ -1,4 +1,4 @@
-# Nádor Mobul-alkalmazás
+# Nádor Mobil-alkalmazás
 
 ## Bevezetés
 Az alkalmazás célja egy olyan mobil interfész megvalósítása, amellyel a Nádor Kft. szolgáltatásai és az általuk telepített és üzemeltetett gyártósorok és részegységek lokalizálhatóak.
