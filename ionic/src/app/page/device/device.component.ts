@@ -21,6 +21,17 @@ import {
 } from 'ionicons/icons';
 import { DeviceService } from 'src/app/service/device.service';
 
+/**
+ * A DeviceComponent osztály a mérések listázásáért felelős.
+ * 
+ * Ez a komponens a kezdőlapon elhelyezett tartalmat jeleníti meg.
+ * 
+ * @example
+ * <app-device></app-device>
+ * 
+ * @see https://ionicframework.com/docs
+ * @see https://angular.io/docs
+ */
 @Component({
   selector: 'app-device',
   templateUrl: './device.component.html',
@@ -48,8 +59,20 @@ export class DeviceComponent implements OnInit {
 
   deviceService = inject(DeviceService);
 
+  /**
+   * A devices$ változó a készülékek listáját tartalmazza.
+   *
+   * Ez a változó a {@link DeviceService} osztályban definiált
+   * {@link DeviceService.getAll} metódus eredményét tartalmazza.
+   */
   devices$ = this.deviceService.getAll();
 
+  /**
+   * A DeviceComponent példányosításáért felelős konstruktor.
+   * 
+   * Ebben a konstruktorban kerülnek beállításra a mérések listázásához
+   * szükséges ikonok.
+   */
   constructor() {
     addIcons({
       barChartOutline,

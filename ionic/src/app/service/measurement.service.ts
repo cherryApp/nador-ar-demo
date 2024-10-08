@@ -3,6 +3,64 @@ import { Measurement } from '../model/measurement';
 import { BaseService } from './base.service';
 import { Observable, of } from 'rxjs';
 
+/**
+ * Az mérési adatokkal foglalkoz  szolgáltatás.
+ *
+ * Ez a szolgáltatás a {@link BaseService} osztályt bővíti, és a mérési adatokat kezeli.
+ *
+ * @example
+ * // Az összes mérési adat lekérdezése
+ * this.measurementService.getAll().subscribe(measurements => {
+ *   console.log(measurements);
+ * });
+ *
+ * @example
+ * // Egy mérési adat lekérdezése
+ * this.measurementService.get(1).subscribe(measurement => {
+ *   console.log(measurement);
+ * });
+ *
+ * @example
+ * // Egy mérési adat módosítása
+ * const measurement: Measurement = {
+ *   id: 1,
+ *   location: 'Location 1',
+ *   device: 'Device 1',
+ *   user: 'User 1',
+ *   time: '2020-01-01 10:00:00',
+ *   arrived: '2020-01-01 10:10:00',
+ *   values: {
+ *     temperature: 25,
+ *     humidity: 50
+ *   }
+ * };
+ * this.measurementService.update(measurement).subscribe(() => {
+ *   console.log('M d s t sa sikeres volt!');
+ * });
+ *
+ * @example
+ * // Egy mérési adat hozz ad sa
+ * const measurement: Measurement = {
+ *   location: 'Location 1',
+ *   device: 'Device 1',
+ *   user: 'User 1',
+ *   time: '2020-01-01 10:00:00',
+ *   arrived: '2020-01-01 10:10:00',
+ *   values: {
+ *     temperature: 25,
+ *     humidity: 50
+ *   }
+ * };
+ * this.measurementService.create(measurement).subscribe(() => {
+ *   console.log('Hozz ad sa sikeres volt!');
+ * });
+ *
+ * @example
+ * // Egy mérési adat törlése
+ * this.measurementService.delete(1).subscribe(() => {
+ *   console.log('T r l s sikeres volt!');
+ * });
+ */
 @Injectable({
   providedIn: 'root'
 })

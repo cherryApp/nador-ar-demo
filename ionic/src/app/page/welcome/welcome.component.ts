@@ -5,6 +5,12 @@ import { TranslocoPipe } from '@ngneat/transloco';
 import { addIcons } from 'ionicons';
 import { cameraReverseOutline, qrCode, map } from 'ionicons/icons';
 
+/**
+ * A WelcomeComponent egy Angular osztály, amely a kezd lapon elhelyezett
+ * tartalmat jeleníti meg.
+ *
+ * Ez a komponens a kezdőlap alapértelmezett komponense.
+ */
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
@@ -23,6 +29,11 @@ import { cameraReverseOutline, qrCode, map } from 'ionicons/icons';
 })
 export class WelcomeComponent  implements OnInit {
 
+  /**
+   * A WelcomeComponent konstruktora, amely beállítja az ikonokat.
+   *
+   * Ez a konstruktor a kezdőlapon használt ikonokat állítja be.
+   */
   constructor() {
     addIcons({
       cameraReverseOutline,

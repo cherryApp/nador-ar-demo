@@ -2,6 +2,15 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap, GoogleMapsModule, MapMarker, MapAdvancedMarker, MapInfoWindow } from '@angular/google-maps';
 import { IonContent, IonGrid, IonRow } from '@ionic/angular/standalone';
 
+/**
+ * Egy pontot reprezentáló  interfész, amely a pont koordinátáját tartalmazza.
+ *
+ * @interface IPoi
+ * @property {google.maps.LatLngLiteral} poi A pont koordinátája.
+ * @property {string} title A pont címe.
+ * @property {string} id A pont azonosítója.
+ * @property {string} img A pont képe.
+ */
 export interface IPoi {
   poi: google.maps.LatLngLiteral;
   title: string;
@@ -9,6 +18,16 @@ export interface IPoi {
   img: string;
 }
 
+/**
+ * A MapComponent osztály a térkép megjelenítéséért felelős.
+ *
+ * Ez a komponens a térkép megjelenítéséért felelős. A térkép a Google Maps API-t
+ * használja, és a térképen azokat a pontokat jeleníti meg, amelyek a {@link pois}
+ * tulajdonságban szerepelnek.
+ *
+ * A térképen lévő pontokra kattintva egy információs ablak jelenik meg, amelyben
+ * a pont címe, azonosítója, és képe szerepel.
+ */
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -27,6 +46,13 @@ export interface IPoi {
 })
 export class MapComponent implements OnInit {
 
+  /**
+   * A térképen megjelenített pontok listája.
+   *
+   * A térképen azokat a pontokat jeleníti meg, amelyek ebben a tulajdonságban
+   * szerepelnek. A pontok a térképen különböz  színvel jelennek meg, attól
+   * függően, hogy melyik csoportba tartoznak.
+   */
   @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
 
   mapOptions = {
@@ -40,6 +66,17 @@ export class MapComponent implements OnInit {
 
   infoImg = '';
 
+  /**
+   * A térképen megjelenített pontokhoz tartozó ikonokat adja vissza.
+   *
+   * A térképen azokat az ikonokat jeleníti meg, amelyeket ebben a metódusban
+   * adunk vissza. A térképen különböz  színvel jelennek meg, attól függően,
+   * hogy melyik csoportba tartoznak.
+   *
+   * @param settings a térképen megjelenített pontokhoz tartozó beállítások.
+   * @param googleMap a térkép objektum.
+   * @returns a térképen megjelenített pontokhoz tartozó ikonok.
+   */
   getMarker(settings: any, googleMap: any) {
     return new google.maps.Marker({
       position: new google.maps.LatLng(settings.latitude, settings.longitude),
@@ -109,6 +146,18 @@ export class MapComponent implements OnInit {
     this.markerPositions.push(this.center);
   }
 
+  /**
+   * A térképen megjelenített pontokat megnyitja.
+   *
+   * Ez a metódus a térképen megjelenített pontokhoz tartozó információs
+   * ablakot megnyitja. Az ablakban a pont címe, azonosítója, és képe
+   * szerepel.
+   *
+   * @param marker a térképen megjelenített pont, amelynek az
+   *               információs ablakját meg kell nyitni
+   * @param point a térképen megjelenített pont, amely tartalmazza a
+   *              pont címét, azonosítóját, és képét
+   */
   openInfoWindow(marker: MapMarker, point: IPoi) {
     this.setInfoContent(point);
     this.infoWindow.open(marker);

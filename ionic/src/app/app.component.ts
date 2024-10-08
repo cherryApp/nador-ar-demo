@@ -56,11 +56,31 @@ import {
 } from 'ionicons/icons';
 import { Subject } from 'rxjs';
 
+/**
+ * A MenuService osztály a men űkhöz kapcsolatos szolgáltatásokat nyújtja.
+ *
+ * Ez az osztály egy Subject-et biztosít az eszköz modal megjelenítéséhez.
+ * A {@link openDeviceModal} mezőn át lehet értesíteni a menüt arról, hogy
+ * meg kell nyitni az eszköz modalját.
+ *
+ * @see https://ionicframework.com/docs
+ * @see https://angular.io/docs
+ */
 @Injectable({ providedIn: 'root' })
 export class MenuService {
   public openDeviceModal: Subject<boolean> = new Subject<boolean>();
 }
 
+/**
+ * Az alkalmazás fő  komponense.
+ *
+ * Ez a komponens tartalmazza az alkalmazás fő részeit, mint például a menüt,
+ * a címsort, és a tartalmi részt. A komponens a {@link MenuService} osztályt
+ * használja a menükhöz kapcsolatos szolgáltatásokhoz.
+ *
+ * @see https://ionicframework.com/docs
+ * @see https://angular.io/docs
+ */
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -105,6 +125,12 @@ export class AppComponent {
 
   lastTitle = 'app_title';
 
+  /**
+   * A menüpontokat tartalmazó tömb.
+   *
+   * Ez a változó tartalmazza az alkalmazás menüpontjait. Minden objektum
+   * tartalmazza a menüpont címét, URL-jét, és ikonját.
+   */
   public appPages = [
     { title: 'pages.home.title', url: '/', icon: 'home' },
     { title: 'pages.qr.title', url: '/qr', icon: 'qr-code' },
@@ -151,10 +177,26 @@ export class AppComponent {
     });
   }
 
+  /**
+   * Egy metódus, ami megnyitja a DeviceModalComponent-et.
+   * 
+   * Ezzel a metódussal a DeviceModalComponent-et nyithatjuk meg, amelyben
+   * a felhasználó a méréshez tartozó eszközöket választhatja ki.
+   * 
+   * A metódus nem tér vissza semmilyen értékkel, csak megnyitja a modal-t.
+   */
   openDeviceModal() {
     this.menuService.openDeviceModal.next(true);
   }
 
+  /**
+   * Egy property, ami a jelenlegi oldal címét adja vissza.
+   * A címek fordítását a `transloco` könyvtár végzi.
+   * A `history.state`-ből veszi a címeket, ha az nincs megadva, akkor a
+   * korábban megadott címeket használja.
+   * 
+   * @returns A jelenlegi oldal címe.
+   */
   get title(): string {
     const title = history.state?.title || this.lastTitle;
 

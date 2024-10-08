@@ -2,7 +2,6 @@ import { Component, OnInit, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { IonicStorageModule } from "@ionic/storage-angular";
 import { HistoryService } from "src/app/service/history.service";
-import { HistoryData } from "src/app/model/history-data";
 import {
   IonCard,
   IonCardContent,
@@ -15,6 +14,12 @@ import {
 } from "@ionic/angular/standalone";
 import { TranslocoPipe } from "@ngneat/transloco";
 
+/**
+ * A HistoryComponent osztály egy Angular komponens, amely a felhasználó
+ * korábbi méréseit jeleníti meg.
+ *
+ * A korábbi méréseket a {@link HistoryService} osztály biztosítja.
+ */
 @Component({
   selector: "app-history",
   templateUrl: "./history.component.html",
@@ -41,6 +46,12 @@ export class HistoryComponent implements OnInit {
 
   constructor() {}
 
+  /**
+   * A komponens inicializálásakor lefutó metódus.
+   *
+   * A metódus a {@link HistoryService#getAll} metódust hívja meg, hogy a
+   * korábbi mérések listáját beolvassa a helyi tárolóból.
+   */
   ngOnInit() {
     this.historyService.getAll();
   }

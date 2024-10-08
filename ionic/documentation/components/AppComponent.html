@@ -1,0 +1,1111 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nador-mobile documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nador-mobile documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Keresendő kifejezés"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Komponensek</li>
+  <li class="breadcrumb-item"
+  >
+  AppComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/app.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Leírás</h3>
+    </p>
+    <p class="comment">
+        <p>Az alkalmazás fő  komponense.</p>
+<p>Ez a komponens tartalmazza az alkalmazás fő részeit, mint például a menüt,
+a címsort, és a tartalmi részt. A komponens a <a href="../injectables/MenuService.html">MenuService</a> osztályt
+használja a menükhöz kapcsolatos szolgáltatásokhoz.</p>
+<p>See <a href="https://ionicframework.com/docs">https://ionicframework.com/docs</a>
+See <a href="https://angular.io/docs">https://angular.io/docs</a></p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metaadatok</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>TranslocoService</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-root</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterLink</code>
+                            <code>RouterLinkActive</code>
+                            <code>CommonModule</code>
+                            <code>IonApp</code>
+                            <code>IonSplitPane</code>
+                            <code>IonMenu</code>
+                            <code>IonContent</code>
+                            <code>IonList</code>
+                            <code>IonListHeader</code>
+                            <code>IonNote</code>
+                            <code>IonMenuToggle</code>
+                            <code>IonItem</code>
+                            <code>IonIcon</code>
+                            <code>IonLabel</code>
+                            <code>IonRouterOutlet</code>
+                            <code>IonHeader</code>
+                            <code>IonToolbar</code>
+                            <code>IonTitle</code>
+                            <code>IonButtons</code>
+                            <code>IonButton</code>
+                            <code>IonMenuButton</code>
+                            <code>TranslocoPipe</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>app.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>app.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Tartalomjegyzék</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Tagváltozók</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#appPages" >appPages</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#labels" >labels</a>
+                            </li>
+                            <li>
+                                <a href="#lastTitle" >lastTitle</a>
+                            </li>
+                            <li>
+                                <a href="#menuService" >menuService</a>
+                            </li>
+                            <li>
+                                <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                <a href="#translocoService" >translocoService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Metódusok</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#openDeviceModal" >openDeviceModal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Getter/setter metódusok</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#title" >title</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Konstruktor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="144" class="link-to-prism">src/app/app.component.ts:144</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Metódusok
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDeviceModal"></a>
+                    <span class="name">
+                        <span ><b>openDeviceModal</b></span>
+                        <a href="#openDeviceModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDeviceModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="188"
+                                    class="link-to-prism">src/app/app.component.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Egy metódus, ami megnyitja a DeviceModalComponent-et.</p>
+<p>Ezzel a metódussal a DeviceModalComponent-et nyithatjuk meg, amelyben
+a felhasználó a méréshez tartozó eszközöket választhatja ki.</p>
+<p>A metódus nem tér vissza semmilyen értékkel, csak megnyitja a modal-t.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Tagváltozók
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appPages"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>appPages</b></span>
+                        <a href="#appPages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>[
+    { title: &#x27;pages.home.title&#x27;, url: &#x27;/&#x27;, icon: &#x27;home&#x27; },
+    { title: &#x27;pages.qr.title&#x27;, url: &#x27;/qr&#x27;, icon: &#x27;qr-code&#x27; },
+    // { title: &#x27;Mérőegységek&#x27;, url: &#x27;/device&#x27;, icon: &#x27;briefcase&#x27; },
+    { title: &#x27;pages.history.title&#x27;, url: &#x27;/history&#x27;, icon: &#x27;bar-chart&#x27; },
+    { title: &#x27;pages.map.title&#x27;, url: &#x27;/map&#x27;, icon: &#x27;map&#x27; },
+    // { title: &#x27;Profil&#x27;, url: &#x27;/profile&#x27;, icon: &#x27;person&#x27; },
+    // { title: &#x27;Belépés&#x27;, url: &#x27;/login&#x27;, icon: &#x27;log-in&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="134" class="link-to-prism">src/app/app.component.ts:134</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A menüpontokat tartalmazó tömb.</p>
+<p>Ez a változó tartalmazza az alkalmazás menüpontjait. Minden objektum
+tartalmazza a menüpont címét, URL-jét, és ikonját.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labels"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>labels</b></span>
+                        <a href="#labels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>[&#x27;Family&#x27;, &#x27;Friends&#x27;, &#x27;Notes&#x27;, &#x27;Work&#x27;, &#x27;Travel&#x27;, &#x27;Reminders&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="144" class="link-to-prism">src/app/app.component.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lastTitle"></a>
+                    <span class="name">
+                        <span ><b>lastTitle</b></span>
+                        <a href="#lastTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>&#x27;app_title&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="126" class="link-to-prism">src/app/app.component.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="menuService"></a>
+                    <span class="name">
+                        <span ><b>menuService</b></span>
+                        <a href="#menuService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>inject(MenuService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="124" class="link-to-prism">src/app/app.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>inject(Router)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="120" class="link-to-prism">src/app/app.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="translocoService"></a>
+                    <span class="name">
+                        <span ><b>translocoService</b></span>
+                        <a href="#translocoService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>inject(TranslocoService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="122" class="link-to-prism">src/app/app.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Getter/setter metódusok
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="title"></a>
+                        <span class="name"><b>title</b><a href="#title"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>title()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Definíció helye: <a href="" data-line="200" class="link-to-prism">src/app/app.component.ts:200</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Egy property, ami a jelenlegi oldal címét adja vissza.
+A címek fordítását a <code>transloco</code> könyvtár végzi.
+A <code>history.state</code>-ből veszi a címeket, ha az nincs megadva, akkor a
+korábban megadott címeket használja.</p>
+</div>
+
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Visszatérési érték : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ChangeDetectionStrategy, Component, Injectable, inject } from &#x27;@angular/core&#x27;;
+import { RouterLink, RouterLinkActive, Router, ActivatedRoute, RouterState } from &#x27;@angular/router&#x27;;
+import {
+  IonApp,
+  IonSplitPane,
+  IonMenu,
+  IonContent,
+  IonList,
+  IonListHeader,
+  IonNote,
+  IonMenuToggle,
+  IonItem,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonToolbar,
+  IonHeader,
+  IonTitle,
+  IonButtons,
+  IonMenuButton,
+  IonButton,
+} from &#x27;@ionic/angular/standalone&#x27;;
+import { TranslocoPipe, TranslocoService } from &#x27;@ngneat/transloco&#x27;;
+import { addIcons } from &#x27;ionicons&#x27;;
+import {
+  homeOutline,
+  homeSharp,
+  mailOutline,
+  mailSharp,
+  paperPlaneOutline,
+  paperPlaneSharp,
+  heartOutline,
+  heartSharp,
+  archiveOutline,
+  archiveSharp,
+  trashOutline,
+  trashSharp,
+  warningOutline,
+  warningSharp,
+  bookmarkOutline,
+  bookmarkSharp,
+  logInOutline,
+  logInSharp,
+  personOutline,
+  personSharp,
+  barChartOutline,
+  barChartSharp,
+  briefcaseOutline,
+  briefcaseSharp,
+  cameraReverseOutline,
+  mapOutline,
+  mapSharp,
+  qrCodeOutline,
+  qrCodeSharp,
+} from &#x27;ionicons/icons&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
+
+/**
+ * A MenuService osztály a men űkhöz kapcsolatos szolgáltatásokat nyújtja.
+ *
+ * Ez az osztály egy Subject-et biztosít az eszköz modal megjelenítéséhez.
+ * A {@link openDeviceModal} mezőn át lehet értesíteni a menüt arról, hogy
+ * meg kell nyitni az eszköz modalját.
+ *
+ * @see https://ionicframework.com/docs
+ * @see https://angular.io/docs
+ */
+@Injectable({ providedIn: &#x27;root&#x27; })
+export class MenuService {
+  public openDeviceModal: Subject&lt;boolean&gt; &#x3D; new Subject&lt;boolean&gt;();
+}
+
+/**
+ * Az alkalmazás fő  komponense.
+ *
+ * Ez a komponens tartalmazza az alkalmazás fő részeit, mint például a menüt,
+ * a címsort, és a tartalmi részt. A komponens a {@link MenuService} osztályt
+ * használja a menükhöz kapcsolatos szolgáltatásokhoz.
+ *
+ * @see https://ionicframework.com/docs
+ * @see https://angular.io/docs
+ */
+@Component({
+  selector: &#x27;app-root&#x27;,
+  templateUrl: &#x27;app.component.html&#x27;,
+  styleUrls: [&#x27;app.component.scss&#x27;],
+  standalone: true,
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    CommonModule,
+    IonApp,
+    IonSplitPane,
+    IonMenu,
+    IonContent,
+    IonList,
+    IonListHeader,
+    IonNote,
+    IonMenuToggle,
+    IonItem,
+    IonIcon,
+    IonLabel,
+    IonRouterOutlet,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonButton,
+    IonMenuButton,
+    TranslocoPipe,
+  ],
+  providers: [
+    TranslocoService,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppComponent {
+
+  router &#x3D; inject(Router);
+
+  translocoService &#x3D; inject(TranslocoService);
+
+  menuService &#x3D; inject(MenuService);
+
+  lastTitle &#x3D; &#x27;app_title&#x27;;
+
+  /**
+   * A menüpontokat tartalmazó tömb.
+   *
+   * Ez a változó tartalmazza az alkalmazás menüpontjait. Minden objektum
+   * tartalmazza a menüpont címét, URL-jét, és ikonját.
+   */
+  public appPages &#x3D; [
+    { title: &#x27;pages.home.title&#x27;, url: &#x27;/&#x27;, icon: &#x27;home&#x27; },
+    { title: &#x27;pages.qr.title&#x27;, url: &#x27;/qr&#x27;, icon: &#x27;qr-code&#x27; },
+    // { title: &#x27;Mérőegységek&#x27;, url: &#x27;/device&#x27;, icon: &#x27;briefcase&#x27; },
+    { title: &#x27;pages.history.title&#x27;, url: &#x27;/history&#x27;, icon: &#x27;bar-chart&#x27; },
+    { title: &#x27;pages.map.title&#x27;, url: &#x27;/map&#x27;, icon: &#x27;map&#x27; },
+    // { title: &#x27;Profil&#x27;, url: &#x27;/profile&#x27;, icon: &#x27;person&#x27; },
+    // { title: &#x27;Belépés&#x27;, url: &#x27;/login&#x27;, icon: &#x27;log-in&#x27; },
+  ];
+
+  public labels &#x3D; [&#x27;Family&#x27;, &#x27;Friends&#x27;, &#x27;Notes&#x27;, &#x27;Work&#x27;, &#x27;Travel&#x27;, &#x27;Reminders&#x27;];
+
+  constructor() {
+    addIcons({
+      mailOutline,
+      mailSharp,
+      paperPlaneOutline,
+      paperPlaneSharp,
+      heartOutline,
+      heartSharp,
+      archiveOutline,
+      archiveSharp,
+      trashOutline,
+      trashSharp,
+      warningOutline,
+      warningSharp,
+      bookmarkOutline,
+      bookmarkSharp,
+      homeOutline,
+      homeSharp,
+      logInOutline,
+      logInSharp,
+      personOutline,
+      personSharp,
+      barChartOutline,
+      barChartSharp,
+      briefcaseOutline,
+      briefcaseSharp,
+      cameraReverseOutline,
+      mapOutline,
+      mapSharp,
+      qrCodeOutline,
+      qrCodeSharp,
+    });
+  }
+
+  /**
+   * Egy metódus, ami megnyitja a DeviceModalComponent-et.
+   * 
+   * Ezzel a metódussal a DeviceModalComponent-et nyithatjuk meg, amelyben
+   * a felhasználó a méréshez tartozó eszközöket választhatja ki.
+   * 
+   * A metódus nem tér vissza semmilyen értékkel, csak megnyitja a modal-t.
+   */
+  openDeviceModal() {
+    this.menuService.openDeviceModal.next(true);
+  }
+
+  /**
+   * Egy property, ami a jelenlegi oldal címét adja vissza.
+   * A címek fordítását a &#x60;transloco&#x60; könyvtár végzi.
+   * A &#x60;history.state&#x60;-ből veszi a címeket, ha az nincs megadva, akkor a
+   * korábban megadott címeket használja.
+   * 
+   * @returns A jelenlegi oldal címe.
+   */
+  get title(): string {
+    const title &#x3D; history.state?.title || this.lastTitle;
+
+    this.lastTitle &#x3D; title;
+    return this.translocoService.translate(title);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-menu contentId&#x3D;&quot;main-content&quot;&gt;
+  &lt;ion-header&gt;
+    &lt;!-- &lt;ion-toolbar&gt;
+      &lt;ion-title&gt;Geo-milk&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt; --&gt;
+  &lt;/ion-header&gt;
+  &lt;ion-content&gt;
+    &lt;ion-list id&#x3D;&quot;inbox-list&quot;&gt;
+      &lt;ion-list-header&gt;{{ &#x27;app_name&#x27; | transloco  }}&lt;/ion-list-header&gt;
+      &lt;ion-note&gt;Budapest&lt;/ion-note&gt;
+
+      &lt;ion-menu-toggle auto-hide&#x3D;&quot;false&quot; *ngFor&#x3D;&quot;let page of appPages; let i &#x3D; index&quot;&gt;
+        &lt;ion-item routerDirection&#x3D;&quot;root&quot; [routerLink]&#x3D;&quot;[page.url]&quot; lines&#x3D;&quot;none&quot; detail&#x3D;&quot;false&quot;
+          routerLinkActive&#x3D;&quot;selected&quot; [routerLinkActiveOptions]&#x3D;&quot;{ exact: true }&quot; [state]&#x3D;&quot;page&quot;&gt;
+          &lt;ion-icon aria-hidden&#x3D;&quot;true&quot; slot&#x3D;&quot;start&quot; [ios]&#x3D;&quot;page.icon + &#x27;-outline&#x27;&quot;
+            [md]&#x3D;&quot;page.icon + &#x27;-sharp&#x27;&quot;&gt;&lt;/ion-icon&gt;
+          &lt;ion-label&gt;{{ page.title | transloco }}&lt;/ion-label&gt;
+        &lt;/ion-item&gt;
+      &lt;/ion-menu-toggle&gt;
+    &lt;/ion-list&gt;
+
+  &lt;/ion-content&gt;
+&lt;/ion-menu&gt;
+&lt;div class&#x3D;&quot;ion-page&quot; id&#x3D;&quot;main-content&quot;&gt;
+  &lt;ion-header&gt;
+    &lt;ion-toolbar&gt;
+      &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+        &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+      &lt;/ion-buttons&gt;
+      &lt;ion-title&gt;{{ title }}&lt;/ion-title&gt;
+      &lt;ion-buttons slot&#x3D;&quot;end&quot;&gt;
+        &lt;ion-button (click)&#x3D;&quot;openDeviceModal()&quot;&gt;
+          &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;camera-reverse-outline&quot;&gt;&lt;/ion-icon&gt;
+        &lt;/ion-button&gt;
+      &lt;/ion-buttons&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+  &lt;ion-content class&#x3D;&quot;ion-padding&quot;&gt;
+    &lt;ion-router-outlet&gt;&lt;/ion-router-outlet&gt;
+  &lt;/ion-content&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>app.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+}
+
+ion-menu.md ion-content {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+ion-menu.md ion-list {
+  padding: 20px 0;
+}
+
+ion-menu.md ion-note {
+  margin-bottom: 30px;
+}
+
+ion-menu.md ion-list-header,
+ion-menu.md ion-note {
+  padding-left: 10px;
+}
+
+ion-menu.md ion-list#inbox-list {
+  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
+}
+
+ion-menu.md ion-list#inbox-list ion-list-header {
+  font-size: 22px;
+  font-weight: 600;
+
+  min-height: 20px;
+}
+
+ion-menu.md ion-list#labels-list ion-list-header {
+  font-size: 16px;
+
+  margin-bottom: 18px;
+
+  color: #757575;
+
+  min-height: 26px;
+}
+
+ion-menu.md ion-item {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 4px;
+}
+
+ion-menu.md ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+ion-menu.md ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.md ion-item ion-icon {
+  color: #616e7e;
+}
+
+ion-menu.md ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-menu.ios ion-content {
+  --padding-bottom: 20px;
+}
+
+ion-menu.ios ion-list {
+  padding: 20px 0 0 0;
+}
+
+ion-menu.ios ion-note {
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+ion-menu.ios ion-item {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 50px;
+}
+
+ion-menu.ios ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.ios ion-item ion-icon {
+  font-size: 24px;
+  color: #73849a;
+}
+
+ion-menu.ios ion-list#labels-list ion-list-header {
+  margin-bottom: 8px;
+}
+
+ion-menu.ios ion-list-header,
+ion-menu.ios ion-note {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+ion-menu.ios ion-note {
+  margin-bottom: 8px;
+}
+
+ion-note {
+  display: inline-block;
+  font-size: 16px;
+
+  color: var(--ion-color-medium-shade);
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Jelmagyarázat</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html elem</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Komponens</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html elem direktívával</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-menu contentId="main-content">  <ion-header>    <!-- <ion-toolbar>      <ion-title>Geo-milk</ion-title>    </ion-toolbar> -->  </ion-header>  <ion-content>    <ion-list id="inbox-list">      <ion-list-header>{{ \'app_name\' | transloco  }}</ion-list-header>      <ion-note>Budapest</ion-note>      <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages; let i = index">        <ion-item routerDirection="root" [routerLink]="[page.url]" lines="none" detail="false"          routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }" [state]="page">          <ion-icon aria-hidden="true" slot="start" [ios]="page.icon + \'-outline\'"            [md]="page.icon + \'-sharp\'"></ion-icon>          <ion-label>{{ page.title | transloco }}</ion-label>        </ion-item>      </ion-menu-toggle>    </ion-list>  </ion-content></ion-menu><div class="ion-page" id="main-content">  <ion-header>    <ion-toolbar>      <ion-buttons slot="start">        <ion-menu-button></ion-menu-button>      </ion-buttons>      <ion-title>{{ title }}</ion-title>      <ion-buttons slot="end">        <ion-button (click)="openDeviceModal()">          <ion-icon slot="icon-only" name="camera-reverse-outline"></ion-icon>        </ion-button>      </ion-buttons>    </ion-toolbar>  </ion-header>  <ion-content class="ion-padding">    <ion-router-outlet></ion-router-outlet>  </ion-content></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DeviceComponent', 'selector': 'app-device'},{'name': 'DeviceModalComponent', 'selector': 'app-device-modal'},{'name': 'FolderPage', 'selector': 'app-folder'},{'name': 'GoogleMapsComponent', 'selector': 'app-google-maps'},{'name': 'HistoryComponent', 'selector': 'app-history'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineModalComponent', 'selector': 'app-machine-modal'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MeasurementComponent', 'selector': 'app-measurement'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'WelcomeComponent', 'selector': 'app-welcome'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> találat "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Nincs találat "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

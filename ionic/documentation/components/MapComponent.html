@@ -1,0 +1,1386 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nador-mobile documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nador-mobile documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Keresendő kifejezés"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Komponensek</li>
+  <li class="breadcrumb-item"
+  >
+  MapComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/page/map/map.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Leírás</h3>
+    </p>
+    <p class="comment">
+        <p>A MapComponent osztály a térkép megjelenítéséért felelős.</p>
+<p>Ez a komponens a térkép megjelenítéséért felelős. A térkép a Google Maps API-t
+használja, és a térképen azokat a pontokat jeleníti meg, amelyek a <a href="pois">pois</a>
+tulajdonságban szerepelnek.</p>
+<p>A térképen lévő pontokra kattintva egy információs ablak jelenik meg, amelyben
+a pont címe, azonosítója, és képe szerepel.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implementált interfészek</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metaadatok</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-map</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>GoogleMapsModule</code>
+                            <code>GoogleMap</code>
+                            <code>MapMarker</code>
+                            <code>MapAdvancedMarker</code>
+                            <code>MapInfoWindow</code>
+                            <code>IonContent</code>
+                            <code>IonGrid</code>
+                            <code>IonRow</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./map.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./map.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Tartalomjegyzék</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Tagváltozók</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#center" >center</a>
+                            </li>
+                            <li>
+                                <a href="#infoID" >infoID</a>
+                            </li>
+                            <li>
+                                <a href="#infoImg" >infoImg</a>
+                            </li>
+                            <li>
+                                <a href="#infoTitle" >infoTitle</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#infoWindow" >infoWindow</a>
+                            </li>
+                            <li>
+                                <a href="#mapOptions" >mapOptions</a>
+                            </li>
+                            <li>
+                                <a href="#markerOptions" >markerOptions</a>
+                            </li>
+                            <li>
+                                <a href="#markerPositions" >markerPositions</a>
+                            </li>
+                            <li>
+                                <a href="#pois" >pois</a>
+                            </li>
+                            <li>
+                                <a href="#zoom" >zoom</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Metódusok</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addMarkers" >addMarkers</a>
+                            </li>
+                            <li>
+                                <a href="#getIcon" >getIcon</a>
+                            </li>
+                            <li>
+                                <a href="#getMarker" >getMarker</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openInfoWindow" >openInfoWindow</a>
+                            </li>
+                            <li>
+                                <a href="#setInfoContent" >setInfoContent</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Konstruktor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="123" class="link-to-prism">src/app/page/map/map.component.ts:123</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Metódusok
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addMarkers"></a>
+                    <span class="name">
+                        <span ><b>addMarkers</b></span>
+                        <a href="#addMarkers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addMarkers()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="145"
+                                    class="link-to-prism">src/app/page/map/map.component.ts:145</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getIcon"></a>
+                    <span class="name">
+                        <span ><b>getIcon</b></span>
+                        <a href="#getIcon"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getIcon()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="95"
+                                    class="link-to-prism">src/app/page/map/map.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>{ url: string; scaledSize: { width: number; height: number; equals: () &#x3D;&gt; boolean; }; fillColor: string; strokeColor: string; }</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMarker"></a>
+                    <span class="name">
+                        <span ><b>getMarker</b></span>
+                        <a href="#getMarker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMarker(settings: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, googleMap: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="80"
+                                    class="link-to-prism">src/app/page/map/map.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A térképen megjelenített pontokhoz tartozó ikonokat adja vissza.</p>
+<p>A térképen azokat az ikonokat jeleníti meg, amelyeket ebben a metódusban
+adunk vissza. A térképen különböz  színvel jelennek meg, attól függően,
+hogy melyik csoportba tartoznak.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                                <td>Leírás</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>settings</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+
+                                            <td>
+                                                    <p>a térképen megjelenített pontokhoz tartozó beállítások.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>googleMap</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+
+                                            <td>
+                                                    <p>a térkép objektum.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>a térképen megjelenített pontokhoz tartozó ikonok.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="127"
+                                    class="link-to-prism">src/app/page/map/map.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openInfoWindow"></a>
+                    <span class="name">
+                        <span ><b>openInfoWindow</b></span>
+                        <a href="#openInfoWindow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openInfoWindow(marker: MapMarker, point: <a href="../interfaces/IPoi.html" target="_self">IPoi</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="161"
+                                    class="link-to-prism">src/app/page/map/map.component.ts:161</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A térképen megjelenített pontokat megnyitja.</p>
+<p>Ez a metódus a térképen megjelenített pontokhoz tartozó információs
+ablakot megnyitja. Az ablakban a pont címe, azonosítója, és képe
+szerepel.</p>
+<b>Példa :</b><div><pre class="line-numbers"><code class="language-none">          információs ablakját meg kell nyitni
+         pont címét, azonosítóját, és képét</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                                <td>Leírás</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>marker</td>
+                                            <td>
+                                                        <code>MapMarker</code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+
+                                            <td>
+                                                    <p>a térképen megjelenített pont, amelynek az
+információs ablakját meg kell nyitni</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>point</td>
+                                            <td>
+                                                            <code><a href="../interfaces/IPoi.html" target="_self" >IPoi</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+
+                                            <td>
+                                                    <p>a térképen megjelenített pont, amely tartalmazza a
+pont címét, azonosítóját, és képét</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setInfoContent"></a>
+                    <span class="name">
+                        <span ><b>setInfoContent</b></span>
+                        <a href="#setInfoContent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setInfoContent(point: <a href="../interfaces/IPoi.html" target="_self">IPoi</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="104"
+                                    class="link-to-prism">src/app/page/map/map.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>point</td>
+                                            <td>
+                                                            <code><a href="../interfaces/IPoi.html" target="_self" >IPoi</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Tagváltozók
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="center"></a>
+                    <span class="name">
+                        <span ><b>center</b></span>
+                        <a href="#center"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>google.maps.LatLngLiteral</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>{ lat: 47.09274595263446, lng: 17.904808187997400 }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="132" class="link-to-prism">src/app/page/map/map.component.ts:132</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="infoID"></a>
+                    <span class="name">
+                        <span ><b>infoID</b></span>
+                        <a href="#infoID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="65" class="link-to-prism">src/app/page/map/map.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="infoImg"></a>
+                    <span class="name">
+                        <span ><b>infoImg</b></span>
+                        <a href="#infoImg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="67" class="link-to-prism">src/app/page/map/map.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="infoTitle"></a>
+                    <span class="name">
+                        <span ><b>infoTitle</b></span>
+                        <a href="#infoTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="63" class="link-to-prism">src/app/page/map/map.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="infoWindow"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>infoWindow</b></span>
+                        <a href="#infoWindow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>MapInfoWindow</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Dekorátorok : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MapInfoWindow)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="56" class="link-to-prism">src/app/page/map/map.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A térképen megjelenített pontok listája.</p>
+<p>A térképen azokat a pontokat jeleníti meg, amelyek ebben a tulajdonságban
+szerepelnek. A pontok a térképen különböz  színvel jelennek meg, attól
+függően, hogy melyik csoportba tartoznak.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mapOptions"></a>
+                    <span class="name">
+                        <span ><b>mapOptions</b></span>
+                        <a href="#mapOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>{
+    center: { lat: 47.09274595263446, lng: 17.904808187997900 },
+    zoom: 7,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="58" class="link-to-prism">src/app/page/map/map.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="markerOptions"></a>
+                    <span class="name">
+                        <span ><b>markerOptions</b></span>
+                        <a href="#markerOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>google.maps.MarkerOptions</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>{
+    draggable: false,
+    icon: {
+      url: &#x27;/assets/svg/cog.svg&#x27;,
+      scaledSize: { width: 30, height: 30, equals: () &#x3D;&gt; true },
+      fillColor: &#x27;red&#x27;,
+      strokeColor: &#x27;red&#x27;,
+    },
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="134" class="link-to-prism">src/app/page/map/map.component.ts:134</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="markerPositions"></a>
+                    <span class="name">
+                        <span ><b>markerPositions</b></span>
+                        <a href="#markerPositions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>google.maps.LatLngLiteral[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="143" class="link-to-prism">src/app/page/map/map.component.ts:143</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pois"></a>
+                    <span class="name">
+                        <span ><b>pois</b></span>
+                        <a href="#pois"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="../interfaces/IPoi.html" target="_self" >IPoi[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>[
+    {
+      poi: { lat: 47.09274595263446, lng: 17.904808187997400 },
+      title: &#x27;Nádor gép&#x27;,
+      id: &#x27;3344332nador&#x27;,
+      img: &#x27;/assets/img/machine-001.jpg&#x27;,
+    },
+    { 
+      poi: { lat: 46.89660094535991, lng: 19.66919601800715 },
+      title: &#x27;GAMF gép&#x27;,
+      id: &#x27;3344333nador&#x27;,
+      img: &#x27;/assets/img/machine-003.jpg&#x27;,
+    },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="110" class="link-to-prism">src/app/page/map/map.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="zoom"></a>
+                    <span class="name">
+                        <span ><b>zoom</b></span>
+                        <a href="#zoom"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>2</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="133" class="link-to-prism">src/app/page/map/map.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { GoogleMap, GoogleMapsModule, MapMarker, MapAdvancedMarker, MapInfoWindow } from &#x27;@angular/google-maps&#x27;;
+import { IonContent, IonGrid, IonRow } from &#x27;@ionic/angular/standalone&#x27;;
+
+/**
+ * Egy pontot reprezentáló  interfész, amely a pont koordinátáját tartalmazza.
+ *
+ * @interface IPoi
+ * @property {google.maps.LatLngLiteral} poi A pont koordinátája.
+ * @property {string} title A pont címe.
+ * @property {string} id A pont azonosítója.
+ * @property {string} img A pont képe.
+ */
+export interface IPoi {
+  poi: google.maps.LatLngLiteral;
+  title: string;
+  id: string;
+  img: string;
+}
+
+/**
+ * A MapComponent osztály a térkép megjelenítéséért felelős.
+ *
+ * Ez a komponens a térkép megjelenítéséért felelős. A térkép a Google Maps API-t
+ * használja, és a térképen azokat a pontokat jeleníti meg, amelyek a {@link pois}
+ * tulajdonságban szerepelnek.
+ *
+ * A térképen lévő pontokra kattintva egy információs ablak jelenik meg, amelyben
+ * a pont címe, azonosítója, és képe szerepel.
+ */
+@Component({
+  selector: &#x27;app-map&#x27;,
+  templateUrl: &#x27;./map.component.html&#x27;,
+  styleUrls: [&#x27;./map.component.scss&#x27;],
+  standalone: true,
+  imports: [
+    GoogleMapsModule,
+    GoogleMap,
+    MapMarker,
+    MapAdvancedMarker,
+    MapInfoWindow,
+    IonContent,
+    IonGrid,
+    IonRow,
+  ],
+})
+export class MapComponent implements OnInit {
+
+  /**
+   * A térképen megjelenített pontok listája.
+   *
+   * A térképen azokat a pontokat jeleníti meg, amelyek ebben a tulajdonságban
+   * szerepelnek. A pontok a térképen különböz  színvel jelennek meg, attól
+   * függően, hogy melyik csoportba tartoznak.
+   */
+  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
+
+  mapOptions &#x3D; {
+    center: { lat: 47.09274595263446, lng: 17.904808187997900 },
+    zoom: 7,
+  };
+
+  infoTitle &#x3D; &#x27;&#x27;;
+
+  infoID &#x3D; &#x27;&#x27;;
+
+  infoImg &#x3D; &#x27;&#x27;;
+
+  /**
+   * A térképen megjelenített pontokhoz tartozó ikonokat adja vissza.
+   *
+   * A térképen azokat az ikonokat jeleníti meg, amelyeket ebben a metódusban
+   * adunk vissza. A térképen különböz  színvel jelennek meg, attól függően,
+   * hogy melyik csoportba tartoznak.
+   *
+   * @param settings a térképen megjelenített pontokhoz tartozó beállítások.
+   * @param googleMap a térkép objektum.
+   * @returns a térképen megjelenített pontokhoz tartozó ikonok.
+   */
+  getMarker(settings: any, googleMap: any) {
+    return new google.maps.Marker({
+      position: new google.maps.LatLng(settings.latitude, settings.longitude),
+      map: googleMap,
+      visible: true,
+      icon: {
+        url: settings.icon,
+        strokeColor: settings.markerColor,
+        fillColor: settings.markerColor,
+        fillOpacity: 1.0,
+        scale: 3
+      },
+    });
+  }
+
+  getIcon() {
+    return {
+      url: &#x27;/assets/svg/cog.svg&#x27;,
+      scaledSize: { width: 30, height: 30, equals: () &#x3D;&gt; true },
+      fillColor: &#x27;red&#x27;,
+      strokeColor: &#x27;red&#x27;,
+    };
+  }
+
+  setInfoContent(point: IPoi) {
+    this.infoTitle &#x3D; point.title;
+    this.infoID &#x3D; point.id;
+    this.infoImg &#x3D; point.img;
+  }
+
+  pois: IPoi[] &#x3D; [
+    {
+      poi: { lat: 47.09274595263446, lng: 17.904808187997400 },
+      title: &#x27;Nádor gép&#x27;,
+      id: &#x27;3344332nador&#x27;,
+      img: &#x27;/assets/img/machine-001.jpg&#x27;,
+    },
+    { 
+      poi: { lat: 46.89660094535991, lng: 19.66919601800715 },
+      title: &#x27;GAMF gép&#x27;,
+      id: &#x27;3344333nador&#x27;,
+      img: &#x27;/assets/img/machine-003.jpg&#x27;,
+    },
+  ];
+
+  constructor() { }
+
+  ngOnInit() {
+    this.addMarkers();
+  }
+
+
+  center: google.maps.LatLngLiteral &#x3D; { lat: 47.09274595263446, lng: 17.904808187997400 };
+  zoom &#x3D; 2;
+  markerOptions: google.maps.MarkerOptions &#x3D; {
+    draggable: false,
+    icon: {
+      url: &#x27;/assets/svg/cog.svg&#x27;,
+      scaledSize: { width: 30, height: 30, equals: () &#x3D;&gt; true },
+      fillColor: &#x27;red&#x27;,
+      strokeColor: &#x27;red&#x27;,
+    },
+  };
+  markerPositions: google.maps.LatLngLiteral[] &#x3D; [];
+
+  addMarkers() {
+    this.markerPositions.push(this.center);
+  }
+
+  /**
+   * A térképen megjelenített pontokat megnyitja.
+   *
+   * Ez a metódus a térképen megjelenített pontokhoz tartozó információs
+   * ablakot megnyitja. Az ablakban a pont címe, azonosítója, és képe
+   * szerepel.
+   *
+   * @param marker a térképen megjelenített pont, amelynek az
+   *               információs ablakját meg kell nyitni
+   * @param point a térképen megjelenített pont, amely tartalmazza a
+   *              pont címét, azonosítóját, és képét
+   */
+  openInfoWindow(marker: MapMarker, point: IPoi) {
+    this.setInfoContent(point);
+    this.infoWindow.open(marker);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-content center text-center&gt;
+  &lt;ion-grid&gt;
+    &lt;ion-row&gt;
+      &lt;google-map height&#x3D;&quot;600px&quot; width&#x3D;&quot;400px&quot; [options]&#x3D;&quot;mapOptions&quot;&gt;
+        @for (point of pois; track $index) {
+          &lt;map-marker 
+            #marker&#x3D;&quot;mapMarker&quot;
+            [position]&#x3D;&quot;point.poi&quot; 
+            [options]&#x3D;&quot;markerOptions&quot;
+            [title]&#x3D;&quot;point.title&quot; 
+            [label]&#x3D;&quot;&#x27;&#x27;&quot;
+            [clickable]&#x3D;&quot;true&quot;
+            [icon]&#x3D;&quot;getIcon()&quot;
+            (mapClick)&#x3D;&quot;openInfoWindow(marker, point)&quot;/&gt;
+        }
+        &lt;map-info-window&gt;
+          &lt;div class&#x3D;&quot;info-window-content&quot;&gt;
+            &lt;h5&gt;{{ infoTitle }}&lt;/h5&gt;
+            &lt;p&gt;id: {{ infoID }}&lt;/p&gt;
+            &lt;img [src]&#x3D;&quot;infoImg&quot; alt&#x3D;&quot;nador&quot;&gt;
+          &lt;/div&gt;
+        &lt;/map-info-window&gt;
+      &lt;/google-map&gt;
+    &lt;/ion-row&gt;
+  &lt;/ion-grid&gt;
+
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./map.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">ion-content {
+    .info-window-content {
+        color: rgb(35, 35, 35);
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Jelmagyarázat</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html elem</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Komponens</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html elem direktívával</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-content center text-center>  <ion-grid>    <ion-row>      <google-map height="600px" width="400px" [options]="mapOptions">        @for (point of pois; track $index) {          <map-marker             #marker="mapMarker"            [position]="point.poi"             [options]="markerOptions"            [title]="point.title"             [label]="\'\'"            [clickable]="true"            [icon]="getIcon()"            (mapClick)="openInfoWindow(marker, point)"/>        }        <map-info-window>          <div class="info-window-content">            <h5>{{ infoTitle }}</h5>            <p>id: {{ infoID }}</p>            <img [src]="infoImg" alt="nador">          </div>        </map-info-window>      </google-map>    </ion-row>  </ion-grid></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DeviceComponent', 'selector': 'app-device'},{'name': 'DeviceModalComponent', 'selector': 'app-device-modal'},{'name': 'FolderPage', 'selector': 'app-folder'},{'name': 'GoogleMapsComponent', 'selector': 'app-google-maps'},{'name': 'HistoryComponent', 'selector': 'app-history'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineModalComponent', 'selector': 'app-machine-modal'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MeasurementComponent', 'selector': 'app-measurement'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'WelcomeComponent', 'selector': 'app-welcome'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MapComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> találat "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Nincs találat "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MapComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,569 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nador-mobile documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nador-mobile documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Keresendő kifejezés"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injektálhatók</li>
+  <li class="breadcrumb-item" >DeviceService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/service/device.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Leírás</h3>
+            </p>
+            <p class="comment">
+                <p>A DeviceService osztály felel s a készülékek kezeléséért.</p>
+<p>Ez az osztály a <a href="../injectables/BaseService.html">BaseService</a> osztályt bővíti, és a készülékek
+kezeléséhez szükséges metódusokat szolgáltatja.</p>
+<b>Példa :</b><div><pre class="line-numbers"><code class="language-html">// A készülékek listázása
+this.deviceService.getAll().subscribe(devices =&gt; {
+  console.log(devices);
+});</code></pre></div><b>Példa :</b><div><pre class="line-numbers"><code class="language-html">// A kiválasztott készülék lekérdezése
+this.deviceService.get(1).subscribe(device =&gt; {
+  console.log(device);
+});</code></pre></div><b>Példa :</b><div><pre class="line-numbers"><code class="language-html">// A kiválasztott készülék módosítása
+const device: Device = {
+  id: 1,
+  name: &#39;Device 1&#39;,
+  code: &#39;D1&#39;,
+  active: true,
+  company: &#39;Company 1&#39;
+};
+this.deviceService.update(device).subscribe(() =&gt; {
+  console.log(&#39;A m d s t sa sikeres volt!&#39;);
+});</code></pre></div><b>Példa :</b><div><pre class="line-numbers"><code class="language-html">// A kiválasztott készülék hozzáadása
+const device: Device = {
+  name: &#39;Device 9&#39;,
+  code: &#39;D9&#39;,
+  active: true,
+  company: &#39;Company 9&#39;
+};
+this.deviceService.create(device).subscribe(() =&gt; {
+  console.log(&#39;A hozzáadás sikeres volt!&#39;);
+});</code></pre></div>
+            </p>
+
+            <p class="comment">
+                <h3>Ősosztály</h3>
+            </p>
+            <p class="comment">
+                            <code><a href="../injectables/BaseService.html" target="_self" >BaseService</a></code>
+            </p>
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Tartalomjegyzék</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Tagváltozók</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#apiUrl" >apiUrl</a>
+                            </li>
+                            <li>
+                                <a href="#entityName" >entityName</a>
+                            </li>
+                            <li>
+                                <a href="#http" >http</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Metódusok</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#getAll" >getAll</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Konstruktor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="52" class="link-to-prism">src/app/service/device.service.ts:52</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Metódusok
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAll"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>getAll</b></span>
+                        <a href="#getAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Örökölve innen:         <code><a href="../injectables/BaseService.html" target="_self" >BaseService</a></code>
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye:         <code><a href="../injectables/BaseService.html#source" target="_self" >BaseService:65</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Visszaadja az összes készülék listáját.</p>
+<p>FIGYELEM! Ez a metódus csak a tesztelés során van használatban, a
+production környezetben más megoldást kell használni!</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="../classes/Device.html" target="_self" >Observable&lt;Device[]&gt;</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Tagváltozók
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="apiUrl"></a>
+                    <span class="name">
+                        <span ><b>apiUrl</b></span>
+                        <a href="#apiUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>environment.apiUrl</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Örökölve innen:         <code><a href="../injectables/BaseService.html" target="_self" >BaseService</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye:         <code><a href="../injectables/BaseService.html#source" target="_self" >BaseService:26</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="entityName"></a>
+                    <span class="name">
+                        <span ><b>entityName</b></span>
+                        <a href="#entityName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Örökölve innen:         <code><a href="../injectables/BaseService.html" target="_self" >BaseService</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye:         <code><a href="../injectables/BaseService.html#source" target="_self" >BaseService:28</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="http"></a>
+                    <span class="name">
+                        <span ><b>http</b></span>
+                        <a href="#http"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>inject(HttpClient)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Örökölve innen:         <code><a href="../injectables/BaseService.html" target="_self" >BaseService</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye:         <code><a href="../injectables/BaseService.html#source" target="_self" >BaseService:24</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { BaseService } from &#x27;./base.service&#x27;;
+import { Device } from &#x27;../model/device&#x27;;
+import { Observable, of } from &#x27;rxjs&#x27;;
+
+/**
+ * A DeviceService osztály felel s a készülékek kezeléséért.
+ *
+ * Ez az osztály a {@link BaseService} osztályt bővíti, és a készülékek
+ * kezeléséhez szükséges metódusokat szolgáltatja.
+ *
+ * @example
+ * // A készülékek listázása
+ * this.deviceService.getAll().subscribe(devices &#x3D;&gt; {
+ *   console.log(devices);
+ * });
+ *
+ * @example
+ * // A kiválasztott készülék lekérdezése
+ * this.deviceService.get(1).subscribe(device &#x3D;&gt; {
+ *   console.log(device);
+ * });
+ *
+ * @example
+ * // A kiválasztott készülék módosítása
+ * const device: Device &#x3D; {
+ *   id: 1,
+ *   name: &#x27;Device 1&#x27;,
+ *   code: &#x27;D1&#x27;,
+ *   active: true,
+ *   company: &#x27;Company 1&#x27;
+ * };
+ * this.deviceService.update(device).subscribe(() &#x3D;&gt; {
+ *   console.log(&#x27;A m d s t sa sikeres volt!&#x27;);
+ * });
+ *
+ * @example
+ * // A kiválasztott készülék hozzáadása
+ * const device: Device &#x3D; {
+ *   name: &#x27;Device 9&#x27;,
+ *   code: &#x27;D9&#x27;,
+ *   active: true,
+ *   company: &#x27;Company 9&#x27;
+ * };
+ * this.deviceService.create(device).subscribe(() &#x3D;&gt; {
+ *   console.log(&#x27;A hozzáadás sikeres volt!&#x27;);
+ * });
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class DeviceService extends BaseService&lt;Device&gt; {
+
+  constructor() {
+    super();
+    this.entityName &#x3D; &#x27;devices&#x27;;
+  }
+
+  /**
+   * Visszaadja az összes készülék listáját.
+   *
+   * &lt;p&gt;FIGYELEM! Ez a metódus csak a tesztelés során van használatban, a
+   * production környezetben más megoldást kell használni!&lt;/p&gt;
+   */
+  override getAll(): Observable&lt;Device[]&gt; {
+    return of(
+      [
+        { id: 1, name: &#x27;Device 1&#x27;, code: &#x27;D1&#x27;, active: true, company: &#x27;Company 1&#x27; },
+        { id: 2, name: &#x27;Device 2&#x27;, code: &#x27;D2&#x27;, active: false, company: &#x27;Company 2&#x27; },
+        { id: 3, name: &#x27;Device 3&#x27;, code: &#x27;D3&#x27;, active: true, company: &#x27;Company 3&#x27; },
+        { id: 4, name: &#x27;Device 4&#x27;, code: &#x27;D4&#x27;, active: true, company: &#x27;Company 4&#x27; },
+        { id: 5, name: &#x27;Device 5&#x27;, code: &#x27;D5&#x27;, active: false, company: &#x27;Company 5&#x27; },
+        { id: 6, name: &#x27;Device 6&#x27;, code: &#x27;D6&#x27;, active: true, company: &#x27;Company 6&#x27; },
+        { id: 7, name: &#x27;Device 7&#x27;, code: &#x27;D7&#x27;, active: true, company: &#x27;Company 7&#x27; },
+        { id: 8, name: &#x27;Device 8&#x27;, code: &#x27;D8&#x27;, active: true, company: &#x27;Company 8&#x27; },
+        { id: 9, name: &#x27;Device 9&#x27;, code: &#x27;D9&#x27;, active: true, company: &#x27;Company 9&#x27; },
+
+      ]);
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> találat "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Nincs találat "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'DeviceService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

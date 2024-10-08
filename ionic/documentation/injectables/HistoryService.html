@@ -1,0 +1,1313 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nador-mobile documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nador-mobile documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Keresendő kifejezés"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injektálhatók</li>
+  <li class="breadcrumb-item" >HistoryService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/service/history.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Leírás</h3>
+            </p>
+            <p class="comment">
+                <p>A HistoryService osztály biztosítja a történeti adatokhoz való hozzáférést.</p>
+<p>Ez a szolgáltatás kezeli a történeti adatokkal kapcsolatos műveleteket,
+mint például a történeti adatok beolvasása, hozzáadása, módosítása és
+törlése.</p>
+<p>A történeti adatokat a <a href="../classes/HistoryData.html">HistoryData</a> osztály példányai reprezentálják.</p>
+<p>A szolgáltatás egy <a href="BehaviorSubject">BehaviorSubject</a> példányt használ a történeti adatok
+listájának tárolására, amelyet a <a href="list$">list$</a> tulajdonságban érhetünk el.</p>
+<p>A szolgáltatás egy másik <a href="BehaviorSubject">BehaviorSubject</a> példányt használ a kiválasztott
+történeti adat tárolására, amelyet a <a href="selected">selected</a> tulajdonságban érhetünk el.</p>
+<p>A szolgáltatás egy <a href="waitForStorage">waitForStorage</a> nevű privát metódust használ a
+tárhely létrehozására, amelyet a <a href="initStorage">initStorage</a> metódusban hívunk meg.</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Tartalomjegyzék</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Tagváltozók</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_storage" >_storage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#hasStorage" >hasStorage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#list$" >list$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#selected" >selected</a>
+                            </li>
+                            <li>
+                                <a href="#storage" >storage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Metódusok</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#add" >add</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#get" >get</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getAll" >getAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#initStorage" >initStorage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#update" >update</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#waitForStorage" >waitForStorage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Konstruktor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="40" class="link-to-prism">src/app/service/history.service.ts:40</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Metódusok
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="add"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>add</b></span>
+                        <a href="#add"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>add(toAdd: <a href="../classess/HistoryData.html" target="_self">HistoryData</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="145"
+                                    class="link-to-prism">src/app/service/history.service.ts:145</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A megadott történeti adatot hozzáadja a tárhelyen lévő listához.</p>
+<p>Ez a metódus a megadott történeti adatot hozzáadja a tárhelyen lévő listához,
+majd frissíti a <a href="list$">list$</a> tulajdonságban lévő listát.</p>
+<p>A metódus visszatérési értéke egy <a href="Promise">Promise</a> példánya, amely a
+művelet eredményét tartalmazza.</p>
+<b>Példa :</b><div><pre class="line-numbers"><code class="language-none">        tárolni, alapértelmezetten `&#39;machineHistory&#39;`</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                                <td>Alapértelmezett érték</td>
+                                                <td>Leírás</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>toAdd</td>
+                                            <td>
+                                                            <code><a href="../classess/HistoryData.html" target="_self" >HistoryData</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <p>a hozzáadandó történeti adat</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                                    <code>&#x27;machineHistory&#x27;</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>a tárhely kulcsa, amely alatt a történeti adatot kell
+tárolni, alapértelmezetten <code>&#39;machineHistory&#39;</code></p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="get"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>get</b></span>
+                        <a href="#get"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>get(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="119"
+                                    class="link-to-prism">src/app/service/history.service.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A megadott történeti adatot beolvassa a tárhelyről.</p>
+<p>Ez a metódus a megadott történeti adatot beolvassa a tárhelyről, és a
+<a href="selected">selected</a> tulajdonságban érhető el.</p>
+<p>A metódus visszatérési értéke egy <a href="Promise">Promise</a> példánya, amely a
+beolvasás eredményét tartalmazza.</p>
+<b>Példa :</b><div><pre class="line-numbers"><code class="language-none">        tárolni, alapértelmezetten `&#39;machineHistory&#39;`</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                                <td>Alapértelmezett érték</td>
+                                                <td>Leírás</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <p>a történeti adat azonosítója</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                                    <code>&#x27;machineHistory&#x27;</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>a tárhely kulcsa, amely alatt a történeti adatot kell
+tárolni, alapértelmezetten <code>&#39;machineHistory&#39;</code></p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAll"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getAll</b></span>
+                        <a href="#getAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAll(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="93"
+                                    class="link-to-prism">src/app/service/history.service.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A történeti adatokat beolvassa a tárhelyről.</p>
+<p>Ez a metódus a történeti adatokat beolvassa a tárhelyről, és a
+<a href="list$">list$</a> tulajdonságban érhető el.</p>
+<p>A metódus visszatérési értéke egy <a href="Promise">Promise</a> példánya, amely a
+beolvasás eredményét tartalmazza.</p>
+<b>Példa :</b><div><pre class="line-numbers"><code class="language-none">        tárolni, alapértelmezetten `&#39;machineHistory&#39;`</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                                <td>Alapértelmezett érték</td>
+                                                <td>Leírás</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                                    <code>&#x27;machineHistory&#x27;</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>a tárhely kulcsa, amely alatt a történeti adatokat kell
+tárolni, alapértelmezetten <code>&#39;machineHistory&#39;</code></p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initStorage"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>initStorage</b></span>
+                        <a href="#initStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>initStorage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="56"
+                                    class="link-to-prism">src/app/service/history.service.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializálja a <a href="../injectables/HistoryService.html">HistoryService</a> szolgáltatásban használt tárhelyet.</p>
+<p>Ez a metódus inicializálja a <a href="../injectables/HistoryService.html">HistoryService</a> szolgáltatásban
+használt tárhelyet, és elmenti a példányosított <a href="Storage">Storage</a> példányt a
+<a href="_storage">_storage</a> tulajdonságban.</p>
+<p>A metódus visszatérési értéke egy <a href="Promise">Promise</a> példánya, amely a
+tárhely létrehozásának eredményét tartalmazza.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>remove</b></span>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="211"
+                                    class="link-to-prism">src/app/service/history.service.ts:211</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Törli a megadott azonosítójú történeti adatot a tárhelyen lévő listából.</p>
+<p>Ez a metódus a megadott azonosítójú történeti adatot törli a tárhelyen lévő
+listából, majd frissíti a <a href="list$">list$</a> tulajdonságban lévő listát.</p>
+<p>A metódus visszatérési értéke egy <a href="Promise">Promise</a> példánya, amely a
+művelet eredményét tartalmazza.</p>
+<b>Példa :</b><div><pre class="line-numbers"><code class="language-none">        tárolni, alapértelmezetten `&#39;machineHistory&#39;`</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                                <td>Alapértelmezett érték</td>
+                                                <td>Leírás</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <p>a törlendő történeti adat azonosítója</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                                    <code>&#x27;machineHistory&#x27;</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>a tárhely kulcsa, amely alatt a történeti adatot kell
+tárolni, alapértelmezetten <code>&#39;machineHistory&#39;</code></p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(toUpdate: <a href="../classess/HistoryData.html" target="_self">HistoryData</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="185"
+                                    class="link-to-prism">src/app/service/history.service.ts:185</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Frissíti a megadott történeti adatot a tárhelyen lévő listában.</p>
+<p>Ez a metódus a megadott történeti adatot frissíti a tárhelyen lévő listában,
+majd frissíti a <a href="list$">list$</a> tulajdonságban lévő listát.</p>
+<p>A metódus visszatérési értéke egy <a href="Promise">Promise</a> példánya, amely a
+művelet eredményét tartalmazza.</p>
+<b>Példa :</b><div><pre class="line-numbers"><code class="language-none">        tárolni, alapértelmezetten `&#39;machineHistory&#39;`</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                                <td>Alapértelmezett érték</td>
+                                                <td>Leírás</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>toUpdate</td>
+                                            <td>
+                                                            <code><a href="../classess/HistoryData.html" target="_self" >HistoryData</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <p>a frissítendő történeti adat</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+                                            <td>
+                                                    <code>&#x27;machineHistory&#x27;</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>a tárhely kulcsa, amely alatt a történeti adatot kell
+tárolni, alapértelmezetten <code>&#39;machineHistory&#39;</code></p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="waitForStorage"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>waitForStorage</b></span>
+                        <a href="#waitForStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>waitForStorage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="71"
+                                    class="link-to-prism">src/app/service/history.service.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Várja meg, amíg a tárhely létrejön.</p>
+<p>Ez a metódus várja meg, amíg a <a href="../injectables/HistoryService.html">HistoryService</a> szolgáltatásban
+használt tárhely létrejön, és csak ezt követően tér vissza.</p>
+<p>A metódus visszatérési értéke egy <a href="Promise">Promise</a> példánya, amely
+a tárhely létrehozásának eredményét tartalmazza.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Tagváltozók
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_storage"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_storage</b></span>
+                        <a href="#_storage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>Storage | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="31" class="link-to-prism">src/app/service/history.service.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasStorage"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>hasStorage</b></span>
+                        <a href="#hasStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>BehaviorSubject&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>new BehaviorSubject&lt;boolean&gt;(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="33" class="link-to-prism">src/app/service/history.service.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="list$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>list$</b></span>
+                        <a href="#list$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="../classess/HistoryData.html" target="_self" >BehaviorSubject&lt;HistoryData[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>new BehaviorSubject&lt;HistoryData[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="36" class="link-to-prism">src/app/service/history.service.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>selected</b></span>
+                        <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="../classess/HistoryData.html" target="_self" >BehaviorSubject&lt;HistoryData | null&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>new BehaviorSubject&lt;HistoryData | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="39" class="link-to-prism">src/app/service/history.service.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="storage"></a>
+                    <span class="name">
+                        <span ><b>storage</b></span>
+                        <a href="#storage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>inject(Storage)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="29" class="link-to-prism">src/app/service/history.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, inject } from &quot;@angular/core&quot;;
+import { Storage } from &quot;@ionic/storage-angular&quot;;
+import { HistoryData } from &quot;../model/history-data&quot;;
+import { BehaviorSubject, filter, firstValueFrom } from &quot;rxjs&quot;;
+
+/**
+ * A HistoryService osztály biztosítja a történeti adatokhoz való hozzáférést.
+ *
+ * Ez a szolgáltatás kezeli a történeti adatokkal kapcsolatos műveleteket,
+ * mint például a történeti adatok beolvasása, hozzáadása, módosítása és
+ * törlése.
+ *
+ * A történeti adatokat a {@link HistoryData} osztály példányai reprezentálják.
+ *
+ * A szolgáltatás egy {@link BehaviorSubject} példányt használ a történeti adatok
+ * listájának tárolására, amelyet a {@link list$} tulajdonságban érhetünk el.
+ *
+ * A szolgáltatás egy másik {@link BehaviorSubject} példányt használ a kiválasztott
+ * történeti adat tárolására, amelyet a {@link selected} tulajdonságban érhetünk el.
+ *
+ * A szolgáltatás egy {@link waitForStorage} nevű privát metódust használ a
+ * tárhely létrehozására, amelyet a {@link initStorage} metódusban hívunk meg.
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class HistoryService {
+
+  storage &#x3D; inject(Storage);
+
+  private _storage: Storage | null &#x3D; null;
+
+  private hasStorage: BehaviorSubject&lt;boolean&gt; &#x3D; 
+    new BehaviorSubject&lt;boolean&gt;(false);
+
+  public list$: BehaviorSubject&lt;HistoryData[]&gt; &#x3D; 
+    new BehaviorSubject&lt;HistoryData[]&gt;([]);
+
+  public selected: BehaviorSubject&lt;HistoryData | null&gt; &#x3D; 
+    new BehaviorSubject&lt;HistoryData | null&gt;(null);
+
+  constructor() {
+    this.initStorage();
+  }
+
+  /**
+   * Inicializálja a {@link HistoryService} szolgáltatásban használt tárhelyet.
+   *
+   * Ez a metódus inicializálja a {@link HistoryService} szolgáltatásban
+   * használt tárhelyet, és elmenti a példányosított {@link Storage} példányt a
+   * {@link _storage} tulajdonságban.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * tárhely létrehozásának eredményét tartalmazza.
+   */
+  async initStorage() {
+    const storage &#x3D; await this.storage.create();
+    this._storage &#x3D; storage;
+    this.hasStorage.next(true);
+  }
+
+  /**
+   * Várja meg, amíg a tárhely létrejön.
+   *
+   * Ez a metódus várja meg, amíg a {@link HistoryService} szolgáltatásban
+   * használt tárhely létrejön, és csak ezt követően tér vissza.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely
+   * a tárhely létrehozásának eredményét tartalmazza.
+   */
+  private waitForStorage(): Promise&lt;boolean&gt; {
+    if (this.hasStorage.value &#x3D;&#x3D;&#x3D; true) {
+      return Promise.resolve(true);
+    }
+
+    return firstValueFrom(this.hasStorage.pipe(
+      filter((hasStorage) &#x3D;&gt; hasStorage &#x3D;&#x3D;&#x3D; true),
+    ));
+  }
+
+  /**
+   * A történeti adatokat beolvassa a tárhelyről.
+   *
+   * Ez a metódus a történeti adatokat beolvassa a tárhelyről, és a
+   * {@link list$} tulajdonságban érhető el.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * beolvasás eredményét tartalmazza.
+   *
+   * @param name a tárhely kulcsa, amely alatt a történeti adatokat kell
+   *             tárolni, alapértelmezetten &#x60;&#x27;machineHistory&#x27;&#x60;
+   */
+  async getAll(name: string &#x3D; &#x27;machineHistory&#x27;): Promise&lt;void&gt; {
+    await this.waitForStorage();
+    this._storage?.get(name).then((data) &#x3D;&gt; {
+      if (data) {
+        this.list$.next(JSON.parse(data));
+      } else {
+        this.list$.next([]);
+      }
+    }).catch((err) &#x3D;&gt; {
+      console.error(err);  
+    });
+  }
+
+  /**
+   * A megadott történeti adatot beolvassa a tárhelyről.
+   *
+   * Ez a metódus a megadott történeti adatot beolvassa a tárhelyről, és a
+   * {@link selected} tulajdonságban érhető el.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * beolvasás eredményét tartalmazza.
+   *
+   * @param id a történeti adat azonosítója
+   * @param name a tárhely kulcsa, amely alatt a történeti adatot kell
+   *             tárolni, alapértelmezetten &#x60;&#x27;machineHistory&#x27;&#x60;
+   */
+  async get(id: number, name: string &#x3D; &#x27;machineHistory&#x27;): Promise&lt;void&gt; {
+    await this.waitForStorage();
+    this._storage?.get(name).then((data) &#x3D;&gt; {
+      if (data) {
+        this.selected.next(JSON.parse(data).find(
+          (d: HistoryData) &#x3D;&gt; d.id &#x3D;&#x3D;&#x3D; id)
+        );
+      } else {
+        this.selected.next(null);
+      }
+    });
+  }
+
+  /**
+   * A megadott történeti adatot hozzáadja a tárhelyen lévő listához.
+   *
+   * Ez a metódus a megadott történeti adatot hozzáadja a tárhelyen lévő listához,
+   * majd frissíti a {@link list$} tulajdonságban lévő listát.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * művelet eredményét tartalmazza.
+   *
+   * @param toAdd a hozzáadandó történeti adat
+   * @param name a tárhely kulcsa, amely alatt a történeti adatot kell
+   *             tárolni, alapértelmezetten &#x60;&#x27;machineHistory&#x27;&#x60;
+   */
+  async add(toAdd: HistoryData, name: string &#x3D; &#x27;machineHistory&#x27;): Promise&lt;void&gt; {
+    await this.waitForStorage();
+
+    const exist &#x3D; this.list$.value.find(
+      (d: HistoryData) &#x3D;&gt; d.values[&#x27;guid&#x27;] &#x3D;&#x3D;&#x3D; toAdd.values[&#x27;guid&#x27;]
+    );
+    if (exist) {
+      toAdd.id &#x3D; exist.id;
+      return await this.update(toAdd, name);
+    }
+
+    this._storage?.get(name).then( async (data) &#x3D;&gt; {
+      if (data) {
+        const list &#x3D; JSON.parse(data);
+        const maxId &#x3D; Math.max(...list.map((d: HistoryData) &#x3D;&gt; d.id), 0);
+        toAdd.id &#x3D; maxId + 1;
+        list.push(toAdd);
+        await this._storage?.set(name, JSON.stringify(list));
+        this.list$.next(list);
+      } else {
+        toAdd.id &#x3D; 1;
+        await this._storage?.set(name, JSON.stringify([toAdd]));
+        this.list$.next([toAdd]);
+      }
+    });
+  }
+
+  /**
+   * Frissíti a megadott történeti adatot a tárhelyen lévő listában.
+   *
+   * Ez a metódus a megadott történeti adatot frissíti a tárhelyen lévő listában,
+   * majd frissíti a {@link list$} tulajdonságban lévő listát.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * művelet eredményét tartalmazza.
+   *
+   * @param toUpdate a frissítendő történeti adat
+   * @param name a tárhely kulcsa, amely alatt a történeti adatot kell
+   *             tárolni, alapértelmezetten &#x60;&#x27;machineHistory&#x27;&#x60;
+   */
+  async update(toUpdate: HistoryData, name: string &#x3D; &#x27;machineHistory&#x27;): Promise&lt;void&gt; {
+    await this.waitForStorage();
+    this._storage?.get(name).then( async (data) &#x3D;&gt; {
+      if (data) {
+        const list &#x3D; JSON.parse(data).map(
+          (d: HistoryData) &#x3D;&gt; d.id &#x3D;&#x3D;&#x3D; toUpdate.id ? toUpdate : d
+        );
+        await this._storage?.set(name, JSON.stringify(list));
+        this.list$.next(list);
+      }
+    });
+  }
+
+  /**
+   * Törli a megadott azonosítójú történeti adatot a tárhelyen lévő listából.
+   *
+   * Ez a metódus a megadott azonosítójú történeti adatot törli a tárhelyen lévő
+   * listából, majd frissíti a {@link list$} tulajdonságban lévő listát.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * művelet eredményét tartalmazza.
+   *
+   * @param id a törlendő történeti adat azonosítója
+   * @param name a tárhely kulcsa, amely alatt a történeti adatot kell
+   *             tárolni, alapértelmezetten &#x60;&#x27;machineHistory&#x27;&#x60;
+   */
+  async remove(id: number, name: string &#x3D; &#x27;machineHistory&#x27;): Promise&lt;void&gt; {
+    await this.waitForStorage();
+    this._storage?.get(name).then( async (data) &#x3D;&gt; {
+      if (data) {
+        const list &#x3D; JSON.parse(data).filter(
+          (d: HistoryData) &#x3D;&gt; d.id !&#x3D;&#x3D; id
+        );
+        await this._storage?.set(name, JSON.stringify(list));
+        this.list$.next(list);
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> találat "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Nincs találat "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'HistoryService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

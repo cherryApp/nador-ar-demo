@@ -1,18 +1,20 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
+/**
+ * A környezeti beállításokat tartalmazza.
+ *
+ * Ez a fájl a `src/environments/environment.prod.ts` fájl másolata, és a fejlesztési
+ * környezetben használt változókat tartalmazza.
+ */
 export const environment = {
   production: false,
+  /**
+   * Az API URL-je. Ez a cím a szervert futtató gép címe.
+   * A fejlesztési környezetben ez a cím a `http://localhost:3000/` lesz.
+   */
   apiUrl: 'http://localhost:3000/',
+
+  /**
+   * A Google Maps Android kulcsa.
+   * Ez a kulcs csak a mobil alkalmazásban szükséges.
+   */
   mapsAndroidApiKey: 'AIzaSyCPVVN0ryZLao5qACQHK8EDCKA2A1gV5Sw',
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

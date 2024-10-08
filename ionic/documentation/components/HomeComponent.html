@@ -1,0 +1,1576 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nador-mobile documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nador-mobile documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Keresendő kifejezés"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Komponensek</li>
+  <li class="breadcrumb-item"
+  >
+  HomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/page/home/home.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Leírás</h3>
+    </p>
+    <p class="comment">
+        <p>Ez a komponens a kezd lapot jeleníti meg.</p>
+<p>Ez a komponens a kezd lapot jeleníti meg. A lapon egy QR-kódolvasó
+található, amely a kamerát használja a QR-kódok beolvasásához.</p>
+<p>A QR-kódokat a <a href="lastKnownQRData">lastKnownQRData</a> tulajdonságban tárolja, és ha
+új QR-kódot olvas be, akkor az új adatokat tárolja el a tulajdonságban.</p>
+<p>Ha a felhasználó a QR-kódolvasóban megnyitja a kamerát, akkor a
+<a href="isModalOpen">isModalOpen</a> tulajdonság igazságértékét állítja true-ra. Ha a
+felhasználó bezárja a kamerát, akkor a <a href="isModalOpen">isModalOpen</a> tulajdonság
+igazságértékét állítja false-ra.</p>
+<p>A komponensben a <a href="../injectables/HistoryService.html">HistoryService</a> szolgáltatás is használható, amely a
+történeti adatok kezeléséért felelős.</p>
+<p>A komponensben a <a href="../injectables/MenuService.html">MenuService</a> szolgáltatás is használható, amely a
+menü kezeléséért felelős.</p>
+<p>A komponensben a <a href="ModalController">ModalController</a> szolgáltatás is használható, amely a
+modál ablakok kezeléséért felelős.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implementált interfészek</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>AfterViewInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metaadatok</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>ModalController</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>IonContent</code>
+                            <code>TranslocoPipe</code>
+                            <code>IonButton</code>
+                            <code>IonIcon</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./home.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./home.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Tartalomjegyzék</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Tagváltozók</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#historyService" >historyService</a>
+                            </li>
+                            <li>
+                                <a href="#isModalOpen" >isModalOpen</a>
+                            </li>
+                            <li>
+                                <a href="#lastKnownQRData" >lastKnownQRData</a>
+                            </li>
+                            <li>
+                                <a href="#menuService" >menuService</a>
+                            </li>
+                            <li>
+                                <a href="#modalCtrl" >modalCtrl</a>
+                            </li>
+                            <li>
+                                <a href="#stopSubscriptions" >stopSubscriptions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#video" >video</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#videoContainer" >videoContainer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Metódusok</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#canDismiss" >canDismiss</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getDevices" >getDevices</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getImage" >getImage</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openDeviceModal" >openDeviceModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openModal" >openModal</a>
+                            </li>
+                            <li>
+                                <a href="#setVideoSize" >setVideoSize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#startCamera" >startCamera</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Konstruktor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="86" class="link-to-prism">src/app/page/home/home.component.ts:86</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Metódusok
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="canDismiss"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>canDismiss</b></span>
+                        <a href="#canDismiss"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>canDismiss(data?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, role?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="94"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Igen
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>role</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Igen
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDevices"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getDevices</b></span>
+                        <a href="#getDevices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getDevices()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="164"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="../classes/Device.html" target="_self" >Promise&lt;MediaDeviceInfo[]&gt;</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getImage"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>getImage</b></span>
+                        <a href="#getImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getImage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="213"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lekéri a kamera aktuális képét.</p>
+<p>A metódus létrehoz egy új <a href="HTMLCanvasElement">HTMLCanvasElement</a> objektumot, amelynek
+szélessége és magassága megegyezik a kamera szélességével és
+magasságával. A metódus ezután a kamera aktuális képét átmásolja a
+<a href="HTMLCanvasElement">HTMLCanvasElement</a> objektumba, és a <a href="image$">image$</a> tulajdonságban
+érhet el.</p>
+<p>A metódus visszatérési értéke egy <a href="Promise">Promise</a> példánya, amely a
+kép letöltésének eredményét tartalmazza.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="116"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="311"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:311</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="103"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Egy modal ablakot nyit meg, amelyben a felhasználó a kamerát válthatja.</p>
+<p>A metódus a <a href="ModalController">ModalController</a> osztályt használja.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDeviceModal"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openDeviceModal</b></span>
+                        <a href="#openDeviceModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openDeviceModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="295"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:295</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Megnyitja a DeviceModalComponent komponenst.</p>
+<p>Ez a metódus a DeviceModalComponent komponenst nyitja meg, amelyben
+a felhasználó a méréshez tartozó eszközöket választhatja ki.</p>
+<p>A metódus visszatérési értéke a DeviceModalComponent értéke egy Promise.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openModal"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>openModal</b></span>
+                        <a href="#openModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="263"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:263</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Megnyitja a MachineModalComponent komponenst.</p>
+<p>Ez a metódus a MachineModalComponent komponenst nyitja meg, amelyben
+a felhasználó a méréshez tartozó gépet választhatja ki. A metódus a
+MachineModalComponent komponenst a ModalController osztállyal nyitja meg,
+és a gép nevét és azonosítóját adja át a komponensnek.</p>
+<p>A metódus visszatérési értéke egy Promise példánya, amely a modal ablak
+bezárásának eredményét tartalmazza.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setVideoSize"></a>
+                    <span class="name">
+                        <span ><b>setVideoSize</b></span>
+                        <a href="#setVideoSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setVideoSize()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="133"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A videó méretét állítja be a tartalmazó eleme alapján.</p>
+<p>A metódus a <a href="videoContainer">videoContainer</a> és a <a href="video">video</a> tulajdonságokat
+használja. A <a href="videoContainer">videoContainer</a> tulajdonságban a videó tartalmazó
+eleme található, a <a href="video">video</a> tulajdonságban pedig a videó eleme
+található.</p>
+<p>A metódus a videó méretét a tartalmazó elem méretéhez igazítja, és a
+videót a tartalmazó elem közepére helyezi.</p>
+<p>A metódus a <a href="AfterViewInit">AfterViewInit</a> életciklus eseményben hívódik meg.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startCamera"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>startCamera</b></span>
+                        <a href="#startCamera"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>startCamera(deviceId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Definíció helye: <a href="" data-line="179"
+                                    class="link-to-prism">src/app/page/home/home.component.ts:179</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A kamerát elindítja.</p>
+<p>A metódus a <a href="MediaDevices.getUserMedia">MediaDevices.getUserMedia</a> metódust használja a
+kamera elindításához. A metódus visszatérési értéke egy
+<a href="Promise">Promise</a> példánya, amely a kamera elindításának eredményét
+tartalmazza.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Paraméterek :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Név</td>
+                                                <td>Típus</td>
+                                            <td>Opcionális</td>
+                                                <td>Leírás</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>deviceId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Nem
+                                            </td>
+
+
+                                            <td>
+                                                    <p>a kamera azonosítója</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Visszatérési érték : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Tagváltozók
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="historyService"></a>
+                    <span class="name">
+                        <span ><b>historyService</b></span>
+                        <a href="#historyService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>inject(HistoryService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="76" class="link-to-prism">src/app/page/home/home.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isModalOpen"></a>
+                    <span class="name">
+                        <span ><b>isModalOpen</b></span>
+                        <a href="#isModalOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="86" class="link-to-prism">src/app/page/home/home.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lastKnownQRData"></a>
+                    <span class="name">
+                        <span ><b>lastKnownQRData</b></span>
+                        <a href="#lastKnownQRData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>literal type | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="84" class="link-to-prism">src/app/page/home/home.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="menuService"></a>
+                    <span class="name">
+                        <span ><b>menuService</b></span>
+                        <a href="#menuService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>inject(MenuService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="74" class="link-to-prism">src/app/page/home/home.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalCtrl"></a>
+                    <span class="name">
+                        <span ><b>modalCtrl</b></span>
+                        <a href="#modalCtrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>inject(ModalController)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="72" class="link-to-prism">src/app/page/home/home.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stopSubscriptions"></a>
+                    <span class="name">
+                        <span ><b>stopSubscriptions</b></span>
+                        <a href="#stopSubscriptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>Subject&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Alapértelmezett érték : </i><code>new Subject&lt;boolean&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="82" class="link-to-prism">src/app/page/home/home.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="video"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>video</b></span>
+                        <a href="#video"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>ElementRef&lt;HTMLVideoElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Dekorátorok : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;video&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="78" class="link-to-prism">src/app/page/home/home.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="videoContainer"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>videoContainer</b></span>
+                        <a href="#videoContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Típus : </i>    <code>ElementRef&lt;HTMLDivElement&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Dekorátorok : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;videoContainer&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Definíció helye: <a href="" data-line="80" class="link-to-prism">src/app/page/home/home.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  CUSTOM_ELEMENTS_SCHEMA,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+  inject,
+} from &quot;@angular/core&quot;;
+import {
+  IonContent,
+  ModalController,
+} from &quot;@ionic/angular/standalone&quot;;
+import { addIcons } from &#x27;ionicons&#x27;;
+import { cameraReverseOutline} from &#x27;ionicons/icons&#x27;;
+import { TranslocoPipe } from &quot;@ngneat/transloco&quot;;
+import { Subject, interval, takeUntil } from &quot;rxjs&quot;;
+import { DeviceModalComponent } from &quot;src/app/common/device-modal/device-modal.component&quot;;
+import { MachineModalComponent } from &quot;src/app/common/machine-modal/machine-modal.component&quot;;
+import { isMobile } from &quot;src/app/common/utils&quot;;
+import { IonButton, IonIcon } from &quot;@ionic/angular/standalone&quot;;
+import { MenuService } from &quot;src/app/app.component&quot;;
+import { HistoryService } from &quot;src/app/service/history.service&quot;;
+import { HistoryData } from &quot;src/app/model/history-data&quot;;
+
+/**
+ * QR kód olvasását segítő könyvtár.
+ */
+declare var jsQR: any;
+
+/**
+ * Ez a komponens a kezd lapot jeleníti meg.
+ *
+ * Ez a komponens a kezd lapot jeleníti meg. A lapon egy QR-kódolvasó
+ * található, amely a kamerát használja a QR-kódok beolvasásához.
+ *
+ * A QR-kódokat a {@link lastKnownQRData} tulajdonságban tárolja, és ha
+ * új QR-kódot olvas be, akkor az új adatokat tárolja el a tulajdonságban.
+ *
+ * Ha a felhasználó a QR-kódolvasóban megnyitja a kamerát, akkor a
+ * {@link isModalOpen} tulajdonság igazságértékét állítja true-ra. Ha a
+ * felhasználó bezárja a kamerát, akkor a {@link isModalOpen} tulajdonság
+ * igazságértékét állítja false-ra.
+ *
+ * A komponensben a {@link HistoryService} szolgáltatás is használható, amely a
+ * történeti adatok kezeléséért felelős.
+ *
+ * A komponensben a {@link MenuService} szolgáltatás is használható, amely a
+ * menü kezeléséért felelős.
+ *
+ * A komponensben a {@link ModalController} szolgáltatás is használható, amely a
+ * modál ablakok kezeléséért felelős.
+ */
+@Component({
+  selector: &quot;app-home&quot;,
+  templateUrl: &quot;./home.component.html&quot;,
+  styleUrls: [&quot;./home.component.scss&quot;],
+  standalone: true,
+  imports: [
+    IonContent,
+    TranslocoPipe,
+    IonButton,
+    IonIcon,
+  ],
+  providers: [
+    ModalController,
+  ],
+})
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  modalCtrl &#x3D; inject(ModalController);
+
+  menuService &#x3D; inject(MenuService);
+
+  historyService &#x3D; inject(HistoryService);
+
+  @ViewChild(&quot;video&quot;) video!: ElementRef&lt;HTMLVideoElement&gt;;
+
+  @ViewChild(&quot;videoContainer&quot;) videoContainer!: ElementRef&lt;HTMLDivElement&gt;;
+
+  stopSubscriptions: Subject&lt;boolean&gt; &#x3D; new Subject&lt;boolean&gt;();
+
+  lastKnownQRData: { [key: string]: any } | null &#x3D; null;
+
+  isModalOpen: boolean &#x3D; false;
+
+  constructor() {
+    addIcons({
+      cameraReverseOutline,
+    });
+  }
+
+  async canDismiss(data?: any, role?: string): Promise&lt;boolean&gt; {
+    return role !&#x3D;&#x3D; &#x27;gesture&#x27;;
+  }
+
+  /**
+   * Egy modal ablakot nyit meg, amelyben a felhasználó a kamerát válthatja.
+   *
+   * A metódus a {@link ModalController} osztályt használja.
+   */
+  ngOnInit() {
+    interval(500)
+      .pipe(takeUntil(this.stopSubscriptions))
+      .subscribe(() &#x3D;&gt; {
+        this.setVideoSize();
+        this.getImage();
+      });
+
+    this.menuService.openDeviceModal.subscribe(() &#x3D;&gt; {
+      this.openDeviceModal();
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.startCamera(&#x27;&#x27;);
+  }
+
+  /**
+   * A videó méretét állítja be a tartalmazó eleme alapján.
+   *
+   * A metódus a {@link videoContainer} és a {@link video} tulajdonságokat
+   * használja. A {@link videoContainer} tulajdonságban a videó tartalmazó
+   * eleme található, a {@link video} tulajdonságban pedig a videó eleme
+   * található.
+   *
+   * A metódus a videó méretét a tartalmazó elem méretéhez igazítja, és a
+   * videót a tartalmazó elem közepére helyezi.
+   *
+   * A metódus a {@link AfterViewInit} életciklus eseményben hívódik meg.
+   */
+  setVideoSize(): void {
+    if (!this.videoContainer || !this.video) {
+      return;
+    }
+
+    const containerWidth &#x3D; this.videoContainer.nativeElement.offsetWidth;
+    const containerHeight &#x3D; this.videoContainer.nativeElement.offsetHeight;
+    const videoWidth &#x3D; this.video.nativeElement.offsetWidth;
+    const videoHeight &#x3D; this.video.nativeElement.offsetHeight;
+
+    const left &#x3D; (containerWidth - videoWidth) / 2;
+    const top &#x3D; (containerHeight - videoHeight) / 2;
+
+    const portrait &#x3D; containerHeight &gt; containerWidth;
+
+    if (portrait) {
+      this.video.nativeElement.style.height &#x3D; containerHeight + &quot;px&quot;;
+      this.video.nativeElement.style.left &#x3D; left + &quot;px&quot;;
+    } else {
+      this.video.nativeElement.style.width &#x3D; containerWidth + &quot;px&quot;;
+      this.video.nativeElement.style.top &#x3D; top + &quot;px&quot;;
+    }
+
+    if (isMobile()) {
+      this.video.nativeElement.style.width &#x3D; &quot;100%&quot;;
+      this.video.nativeElement.style.left &#x3D; &quot;0px&quot;;
+      return;
+    }
+
+  }
+
+  async getDevices(): Promise&lt;MediaDeviceInfo[]&gt; {
+    const devices &#x3D; await navigator.mediaDevices.enumerateDevices();
+    return devices.filter( (device) &#x3D;&gt; device.kind &#x3D;&#x3D;&#x3D; &quot;videoinput&quot; );
+  }
+
+  /**
+   * A kamerát elindítja.
+   *
+   * A metódus a {@link MediaDevices.getUserMedia} metódust használja a
+   * kamera elindításához. A metódus visszatérési értéke egy
+   * {@link Promise} példánya, amely a kamera elindításának eredményét
+   * tartalmazza.
+   *
+   * @param deviceId a kamera azonosítója
+   */
+  async startCamera(deviceId: string): Promise&lt;void&gt; {
+    // validate video element
+    if (navigator.mediaDevices.getUserMedia) {
+      const devices &#x3D; await this.getDevices();
+
+      console.log(devices[0].label);
+
+
+      navigator.mediaDevices
+        .getUserMedia({video: {
+          deviceId: deviceId || devices[0].deviceId,
+        }})
+        .then((stream) &#x3D;&gt; {
+          this.video.nativeElement.srcObject &#x3D; stream;
+        })
+        .catch(function (error) {
+          console.log(&quot;Something went wrong!&quot;);
+          console.log(error);
+        });
+    }
+  }
+
+  /**
+   * Lekéri a kamera aktuális képét.
+   *
+   * A metódus létrehoz egy új {@link HTMLCanvasElement} objektumot, amelynek
+   * szélessége és magassága megegyezik a kamera szélességével és
+   * magasságával. A metódus ezután a kamera aktuális képét átmásolja a
+   * {@link HTMLCanvasElement} objektumba, és a {@link image$} tulajdonságban
+   * érhet el.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * kép letöltésének eredményét tartalmazza.
+   */
+  async getImage(): Promise&lt;void&gt; {
+    if (!this.video) {
+      return;
+    }
+
+    const canvas &#x3D; document.createElement(&quot;canvas&quot;);
+
+    canvas.width &#x3D; this.video.nativeElement.clientWidth;
+    canvas.height &#x3D; this.video.nativeElement.clientHeight;
+
+    let ctx &#x3D; canvas.getContext(&quot;2d&quot;);
+    if (!ctx) {
+      return;
+    }
+
+    ctx.drawImage(this.video.nativeElement, 0, 0, canvas.width, canvas.height);
+
+    if (canvas.width &#x3D;&#x3D;&#x3D; 0 || canvas.height &#x3D;&#x3D;&#x3D; 0) {
+      return;
+    }
+
+    var imageData &#x3D; ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var code &#x3D; jsQR(imageData.data, imageData.width, imageData.height, {
+      inversionAttempts: &quot;dontInvert&quot;,
+    });
+
+    if (code &amp;&amp; code.data) {
+      code &#x3D; JSON.parse(code.data);
+
+      if (code.guid &#x3D;&#x3D;&#x3D; this.lastKnownQRData?.[&quot;guid&quot;]) {
+        return;
+      }
+
+      this.lastKnownQRData &#x3D; code;
+
+      await this.openModal();
+    }
+  }
+
+  /**
+   * Megnyitja a MachineModalComponent komponenst.
+   *
+   * Ez a metódus a MachineModalComponent komponenst nyitja meg, amelyben
+   * a felhasználó a méréshez tartozó gépet választhatja ki. A metódus a
+   * MachineModalComponent komponenst a ModalController osztállyal nyitja meg,
+   * és a gép nevét és azonosítóját adja át a komponensnek.
+   *
+   * A metódus visszatérési értéke egy Promise példánya, amely a modal ablak
+   * bezárásának eredményét tartalmazza.
+   */
+  async openModal() {
+    const modal &#x3D; await this.modalCtrl.create({
+      component: MachineModalComponent,
+      componentProps: {
+        name: this.lastKnownQRData?.[&quot;name&quot;],
+        guid: this.lastKnownQRData?.[&quot;guid&quot;],
+      }
+    });
+    modal.present();
+
+    this.historyService.add({ 
+      ...new HistoryData(),
+      values: this.lastKnownQRData || {},
+    });
+
+    const { data, role } &#x3D; await modal.onWillDismiss();
+
+    this.lastKnownQRData &#x3D; null;
+
+    if (role &#x3D;&#x3D;&#x3D; &#x27;confirm&#x27;) {
+      // this.message &#x3D; &#x60;Hello, ${data}!&#x60;;
+    }
+  }
+
+  /**
+   * Megnyitja a DeviceModalComponent komponenst.
+   *
+   * Ez a metódus a DeviceModalComponent komponenst nyitja meg, amelyben
+   * a felhasználó a méréshez tartozó eszközöket választhatja ki.
+   *
+   * A metódus visszatérési értéke a DeviceModalComponent értéke egy Promise.
+   */
+  async openDeviceModal() {
+    const modal &#x3D; await this.modalCtrl.create({
+      component: DeviceModalComponent,
+      componentProps: {
+        devices: await this.getDevices(),
+      }
+    });
+    modal.present();
+
+    const { data } &#x3D; await modal.onWillDismiss();
+    
+    if (data?.deviceId) {
+      this.startCamera(data?.deviceId);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.stopSubscriptions.next(true);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div #videoContainer class&#x3D;&quot;video-card&quot;&gt;
+  &lt;video
+    #video
+    autoPlay&#x3D;&quot;true&quot;
+    playsInline&#x3D;&quot;true&quot;
+    muted&gt;
+  &lt;/video&gt;
+&lt;/div&gt;
+&lt;ion-content #content&gt;
+  &lt;!-- &lt;ion-button (click)&#x3D;&quot;openDeviceModal()&quot; id&#x3D;&quot;camera-button&quot;&gt;
+    &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;camera-reverse-outline&quot;&gt;&lt;/ion-icon&gt;
+  &lt;/ion-button&gt; --&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./home.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.video-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    video {
+        position: absolute;
+    }
+}
+
+#camera-button {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Jelmagyarázat</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html elem</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Komponens</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html elem direktívával</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div #videoContainer class="video-card">  <video    #video    autoPlay="true"    playsInline="true"    muted>  </video></div><ion-content #content>  <!-- <ion-button (click)="openDeviceModal()" id="camera-button">    <ion-icon slot="icon-only" name="camera-reverse-outline"></ion-icon>  </ion-button> --></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DeviceComponent', 'selector': 'app-device'},{'name': 'DeviceModalComponent', 'selector': 'app-device-modal'},{'name': 'FolderPage', 'selector': 'app-folder'},{'name': 'GoogleMapsComponent', 'selector': 'app-google-maps'},{'name': 'HistoryComponent', 'selector': 'app-history'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MachineModalComponent', 'selector': 'app-machine-modal'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MeasurementComponent', 'selector': 'app-measurement'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'WelcomeComponent', 'selector': 'app-welcome'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> találat "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Nincs találat "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

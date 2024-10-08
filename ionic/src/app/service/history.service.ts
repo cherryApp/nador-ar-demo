@@ -3,6 +3,24 @@ import { Storage } from "@ionic/storage-angular";
 import { HistoryData } from "../model/history-data";
 import { BehaviorSubject, filter, firstValueFrom } from "rxjs";
 
+/**
+ * A HistoryService osztály biztosítja a történeti adatokhoz való hozzáférést.
+ *
+ * Ez a szolgáltatás kezeli a történeti adatokkal kapcsolatos műveleteket,
+ * mint például a történeti adatok beolvasása, hozzáadása, módosítása és
+ * törlése.
+ *
+ * A történeti adatokat a {@link HistoryData} osztály példányai reprezentálják.
+ *
+ * A szolgáltatás egy {@link BehaviorSubject} példányt használ a történeti adatok
+ * listájának tárolására, amelyet a {@link list$} tulajdonságban érhetünk el.
+ *
+ * A szolgáltatás egy másik {@link BehaviorSubject} példányt használ a kiválasztott
+ * történeti adat tárolására, amelyet a {@link selected} tulajdonságban érhetünk el.
+ *
+ * A szolgáltatás egy {@link waitForStorage} nevű privát metódust használ a
+ * tárhely létrehozására, amelyet a {@link initStorage} metódusban hívunk meg.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -25,12 +43,31 @@ export class HistoryService {
     this.initStorage();
   }
 
+  /**
+   * Inicializálja a {@link HistoryService} szolgáltatásban használt tárhelyet.
+   *
+   * Ez a metódus inicializálja a {@link HistoryService} szolgáltatásban
+   * használt tárhelyet, és elmenti a példányosított {@link Storage} példányt a
+   * {@link _storage} tulajdonságban.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * tárhely létrehozásának eredményét tartalmazza.
+   */
   async initStorage() {
     const storage = await this.storage.create();
     this._storage = storage;
     this.hasStorage.next(true);
   }
 
+  /**
+   * Várja meg, amíg a tárhely létrejön.
+   *
+   * Ez a metódus várja meg, amíg a {@link HistoryService} szolgáltatásban
+   * használt tárhely létrejön, és csak ezt követően tér vissza.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely
+   * a tárhely létrehozásának eredményét tartalmazza.
+   */
   private waitForStorage(): Promise<boolean> {
     if (this.hasStorage.value === true) {
       return Promise.resolve(true);
@@ -41,6 +78,18 @@ export class HistoryService {
     ));
   }
 
+  /**
+   * A történeti adatokat beolvassa a tárhelyről.
+   *
+   * Ez a metódus a történeti adatokat beolvassa a tárhelyről, és a
+   * {@link list$} tulajdonságban érhető el.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * beolvasás eredményét tartalmazza.
+   *
+   * @param name a tárhely kulcsa, amely alatt a történeti adatokat kell
+   *             tárolni, alapértelmezetten `'machineHistory'`
+   */
   async getAll(name: string = 'machineHistory'): Promise<void> {
     await this.waitForStorage();
     this._storage?.get(name).then((data) => {
@@ -54,6 +103,19 @@ export class HistoryService {
     });
   }
 
+  /**
+   * A megadott történeti adatot beolvassa a tárhelyről.
+   *
+   * Ez a metódus a megadott történeti adatot beolvassa a tárhelyről, és a
+   * {@link selected} tulajdonságban érhető el.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * beolvasás eredményét tartalmazza.
+   *
+   * @param id a történeti adat azonosítója
+   * @param name a tárhely kulcsa, amely alatt a történeti adatot kell
+   *             tárolni, alapértelmezetten `'machineHistory'`
+   */
   async get(id: number, name: string = 'machineHistory'): Promise<void> {
     await this.waitForStorage();
     this._storage?.get(name).then((data) => {
@@ -67,6 +129,19 @@ export class HistoryService {
     });
   }
 
+  /**
+   * A megadott történeti adatot hozzáadja a tárhelyen lévő listához.
+   *
+   * Ez a metódus a megadott történeti adatot hozzáadja a tárhelyen lévő listához,
+   * majd frissíti a {@link list$} tulajdonságban lévő listát.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * művelet eredményét tartalmazza.
+   *
+   * @param toAdd a hozzáadandó történeti adat
+   * @param name a tárhely kulcsa, amely alatt a történeti adatot kell
+   *             tárolni, alapértelmezetten `'machineHistory'`
+   */
   async add(toAdd: HistoryData, name: string = 'machineHistory'): Promise<void> {
     await this.waitForStorage();
 
@@ -94,6 +169,19 @@ export class HistoryService {
     });
   }
 
+  /**
+   * Frissíti a megadott történeti adatot a tárhelyen lévő listában.
+   *
+   * Ez a metódus a megadott történeti adatot frissíti a tárhelyen lévő listában,
+   * majd frissíti a {@link list$} tulajdonságban lévő listát.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * művelet eredményét tartalmazza.
+   *
+   * @param toUpdate a frissítendő történeti adat
+   * @param name a tárhely kulcsa, amely alatt a történeti adatot kell
+   *             tárolni, alapértelmezetten `'machineHistory'`
+   */
   async update(toUpdate: HistoryData, name: string = 'machineHistory'): Promise<void> {
     await this.waitForStorage();
     this._storage?.get(name).then( async (data) => {
@@ -107,6 +195,19 @@ export class HistoryService {
     });
   }
 
+  /**
+   * Törli a megadott azonosítójú történeti adatot a tárhelyen lévő listából.
+   *
+   * Ez a metódus a megadott azonosítójú történeti adatot törli a tárhelyen lévő
+   * listából, majd frissíti a {@link list$} tulajdonságban lévő listát.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * művelet eredményét tartalmazza.
+   *
+   * @param id a törlendő történeti adat azonosítója
+   * @param name a tárhely kulcsa, amely alatt a történeti adatot kell
+   *             tárolni, alapértelmezetten `'machineHistory'`
+   */
   async remove(id: number, name: string = 'machineHistory'): Promise<void> {
     await this.waitForStorage();
     this._storage?.get(name).then( async (data) => {

@@ -24,8 +24,34 @@ import { MenuService } from "src/app/app.component";
 import { HistoryService } from "src/app/service/history.service";
 import { HistoryData } from "src/app/model/history-data";
 
+/**
+ * QR kód olvasását segítő könyvtár.
+ */
 declare var jsQR: any;
 
+/**
+ * Ez a komponens a kezd lapot jeleníti meg.
+ *
+ * Ez a komponens a kezd lapot jeleníti meg. A lapon egy QR-kódolvasó
+ * található, amely a kamerát használja a QR-kódok beolvasásához.
+ *
+ * A QR-kódokat a {@link lastKnownQRData} tulajdonságban tárolja, és ha
+ * új QR-kódot olvas be, akkor az új adatokat tárolja el a tulajdonságban.
+ *
+ * Ha a felhasználó a QR-kódolvasóban megnyitja a kamerát, akkor a
+ * {@link isModalOpen} tulajdonság igazságértékét állítja true-ra. Ha a
+ * felhasználó bezárja a kamerát, akkor a {@link isModalOpen} tulajdonság
+ * igazságértékét állítja false-ra.
+ *
+ * A komponensben a {@link HistoryService} szolgáltatás is használható, amely a
+ * történeti adatok kezeléséért felelős.
+ *
+ * A komponensben a {@link MenuService} szolgáltatás is használható, amely a
+ * menü kezeléséért felelős.
+ *
+ * A komponensben a {@link ModalController} szolgáltatás is használható, amely a
+ * modál ablakok kezeléséért felelős.
+ */
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -69,6 +95,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     return role !== 'gesture';
   }
 
+  /**
+   * Egy modal ablakot nyit meg, amelyben a felhasználó a kamerát válthatja.
+   *
+   * A metódus a {@link ModalController} osztályt használja.
+   */
   ngOnInit() {
     interval(500)
       .pipe(takeUntil(this.stopSubscriptions))
@@ -86,6 +117,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.startCamera('');
   }
 
+  /**
+   * A videó méretét állítja be a tartalmazó eleme alapján.
+   *
+   * A metódus a {@link videoContainer} és a {@link video} tulajdonságokat
+   * használja. A {@link videoContainer} tulajdonságban a videó tartalmazó
+   * eleme található, a {@link video} tulajdonságban pedig a videó eleme
+   * található.
+   *
+   * A metódus a videó méretét a tartalmazó elem méretéhez igazítja, és a
+   * videót a tartalmazó elem közepére helyezi.
+   *
+   * A metódus a {@link AfterViewInit} életciklus eseményben hívódik meg.
+   */
   setVideoSize(): void {
     if (!this.videoContainer || !this.video) {
       return;
@@ -122,6 +166,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     return devices.filter( (device) => device.kind === "videoinput" );
   }
 
+  /**
+   * A kamerát elindítja.
+   *
+   * A metódus a {@link MediaDevices.getUserMedia} metódust használja a
+   * kamera elindításához. A metódus visszatérési értéke egy
+   * {@link Promise} példánya, amely a kamera elindításának eredményét
+   * tartalmazza.
+   *
+   * @param deviceId a kamera azonosítója
+   */
   async startCamera(deviceId: string): Promise<void> {
     // validate video element
     if (navigator.mediaDevices.getUserMedia) {
@@ -144,6 +198,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  /**
+   * Lekéri a kamera aktuális képét.
+   *
+   * A metódus létrehoz egy új {@link HTMLCanvasElement} objektumot, amelynek
+   * szélessége és magassága megegyezik a kamera szélességével és
+   * magasságával. A metódus ezután a kamera aktuális képét átmásolja a
+   * {@link HTMLCanvasElement} objektumba, és a {@link image$} tulajdonságban
+   * érhet el.
+   *
+   * A metódus visszatérési értéke egy {@link Promise} példánya, amely a
+   * kép letöltésének eredményét tartalmazza.
+   */
   async getImage(): Promise<void> {
     if (!this.video) {
       return;
@@ -183,6 +249,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  /**
+   * Megnyitja a MachineModalComponent komponenst.
+   *
+   * Ez a metódus a MachineModalComponent komponenst nyitja meg, amelyben
+   * a felhasználó a méréshez tartozó gépet választhatja ki. A metódus a
+   * MachineModalComponent komponenst a ModalController osztállyal nyitja meg,
+   * és a gép nevét és azonosítóját adja át a komponensnek.
+   *
+   * A metódus visszatérési értéke egy Promise példánya, amely a modal ablak
+   * bezárásának eredményét tartalmazza.
+   */
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: MachineModalComponent,
@@ -207,6 +284,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  /**
+   * Megnyitja a DeviceModalComponent komponenst.
+   *
+   * Ez a metódus a DeviceModalComponent komponenst nyitja meg, amelyben
+   * a felhasználó a méréshez tartozó eszközöket választhatja ki.
+   *
+   * A metódus visszatérési értéke a DeviceModalComponent értéke egy Promise.
+   */
   async openDeviceModal() {
     const modal = await this.modalCtrl.create({
       component: DeviceModalComponent,
